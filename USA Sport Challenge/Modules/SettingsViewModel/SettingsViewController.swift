@@ -3,19 +3,17 @@
 
 import UIKit
 
-
 class SettingsViewController:
     UIViewController
 {
     
     private lazy var contentView = self.view as? SettingsView
     
-    let viewModel = SettingsViewModel()
+    private let viewModel = SettingsViewModel()
     
     override func loadView() {
         self.view = SettingsView(frame: UIScreen.main.bounds)
     }
-    
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -31,9 +29,11 @@ class SettingsViewController:
         contentView.soundButton.makeShadows(radius: 5, shadowOpacity: 0.2)
         contentView.soundButton.layer.cornerRadius = 10
         
+        contentView.backButton.makeShadows(radius: 5, shadowOpacity: 0.2)
     }
     
-    
-    
+}
+
+extension SettingsViewController {
     
 }

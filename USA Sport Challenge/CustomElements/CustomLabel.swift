@@ -18,6 +18,7 @@ class CustomLabel:
     ) {
         self.init(frame: .zero)
         self.text = title
+        self.textColor = .black
         self.font = .systemFont(ofSize: ofSize, weight: weight)
     }
 

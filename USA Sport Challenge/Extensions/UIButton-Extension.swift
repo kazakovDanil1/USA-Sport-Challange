@@ -6,8 +6,18 @@ import UIKit
 extension UIButton
 {
     
-    @objc func switchAble() {
-        
+    static let greenIndicator: UIView = {
+        let view = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 55,
+                width: UIScreen.main.bounds.width / 2,
+                height: 5))
+        view.backgroundColor = .green
+        return view
+    }()
+    
+    @objc func switchable() {
         if self.titleLabel?.text == "Off" {
             self.setTitle("On", for: .normal)
             backgroundColor = #colorLiteral(red: 0.9991982579, green: 0.6899703145, blue: 0.08480066806, alpha: 1)
@@ -19,20 +29,8 @@ extension UIButton
     }
     
     @objc func underline() {
-        let greenIndicator: UIView = {
-            let view = UIView(
-                frame: CGRect(
-                    x: -self.bounds.minX,
-                    y: 55,
-                    width: UIScreen.main.bounds.width / 2,
-                    height: 5))
-            view.backgroundColor = .green
-            return view
-        }()
-        
         if self.isHighlighted {
-            self.addSubview(greenIndicator)
+            self.addSubview(UIButton.greenIndicator)
         }
     }
-    
 }

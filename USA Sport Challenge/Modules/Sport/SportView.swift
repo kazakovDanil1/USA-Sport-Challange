@@ -9,46 +9,8 @@ class SportView:
 {
     let contentView = MainView("GrayBackground")
     
-    let topContentView = MainView(UIColor().topColor)
+    let topContentView = TopContentView()
     
-    let notifyButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(named: "NotifyBell")
-        button.setImage(image, for: .normal)
-        button.addTarget(
-            self,
-            action: #selector(UIButton().underline),
-            for: .touchUpInside
-        )
-        
-        return button
-    }()
-    
-    let settingsButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(named: "SettingsGear")
-        button.setImage(image, for: .normal)
-        button.addTarget(
-            self,
-            action: #selector(UIButton().underline),
-            for: .touchUpInside
-        )
-
-        return button
-    }()
-    
-    lazy var buttonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        
-        stackView.addArrangedSubview(notifyButton)
-        stackView.addArrangedSubview(settingsButton)
-        
-        return stackView
-    }()
-
     private let chooseSport = ChooseSportButton(
         frame: .zero
     )
@@ -74,12 +36,15 @@ class SportView:
     required init(coder: NSCoder) {
         fatalError()
     }
+    
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
         addSubviews()
     }
+    
     override func updateConstraintsIfNeeded() {
         super.layoutIfNeeded()
+        makeMainConstraints()
         makeConstraints()
     }
 }
@@ -88,36 +53,38 @@ extension SportView
 {
     func commonInit() {
         addSubview(contentView)
-        contentView.frame = self.bounds
+        addSubview(topContentView)
     }
     
     func addSubviews() {
         [
-            chooseSport,
-            topContentView
+            chooseSport
         ].forEach {contentView.addSubview($0)}
         
         chooseSport.addSubview(hockey)
         chooseSport.addSubview(americanFootBall)
         chooseSport.addSubview(basketBall)
-        
-        topContentView.addSubview(buttonStackView)
     }
     
-    func makeConstraints() {
-        
-        topContentView.snp.makeConstraints { make in
+    func makeMainConstraints() {
+
+        topContentView.snp.makeConstraints
+        { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.height.equalTo(contentView.frame.size.height / 6)
+            make.height.equalTo(UIScreen.main.bounds.height / 6)
         }
         
-        buttonStackView.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
-            make.bottom.equalToSuperview() .inset(10)
-            make.height.equalTo(50)
+        contentView.snp.makeConstraints
+        { make in
+            make.top.equalTo(topContentView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
+    }
+    
+    func makeConstraints() {
         
         chooseSport.snp.makeConstraints
         { make in
@@ -139,6 +106,5 @@ extension SportView
         basketBall.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
-        
     }
 }

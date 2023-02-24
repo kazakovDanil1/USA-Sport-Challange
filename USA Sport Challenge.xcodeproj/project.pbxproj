@@ -28,6 +28,13 @@
 		979BDF2F29A8D3A600C24421 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF2E29A8D3A600C24421 /* CustomLabel.swift */; };
 		979BDF3329A8EAEE00C24421 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3229A8EAEE00C24421 /* UIView-Extension.swift */; };
 		979BDF3529A8F37000C24421 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3429A8F37000C24421 /* SwitchButton.swift */; };
+		979BDF3729A906FF00C24421 /* ChosenSportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3629A906FF00C24421 /* ChosenSportViewModel.swift */; };
+		979BDF3A29A9071900C24421 /* ChosenSportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3929A9071900C24421 /* ChosenSportView.swift */; };
+		979BDF3C29A9072200C24421 /* ChosenSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3B29A9072200C24421 /* ChosenSportViewController.swift */; };
+		979BDF3E29A91F8000C24421 /* UIViewController-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3D29A91F8000C24421 /* UIViewController-Extension.swift */; };
+		979BDF4029A9229800C24421 /* TopContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3F29A9229800C24421 /* TopContentView.swift */; };
+		979BDF4229A934A200C24421 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF4129A934A200C24421 /* Dynamic.swift */; };
+		979BDF4429A93B2A00C24421 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF4329A93B2A00C24421 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +60,13 @@
 		979BDF2E29A8D3A600C24421 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		979BDF3229A8EAEE00C24421 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
 		979BDF3429A8F37000C24421 /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
+		979BDF3629A906FF00C24421 /* ChosenSportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenSportViewModel.swift; sourceTree = "<group>"; };
+		979BDF3929A9071900C24421 /* ChosenSportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenSportView.swift; sourceTree = "<group>"; };
+		979BDF3B29A9072200C24421 /* ChosenSportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChosenSportViewController.swift; sourceTree = "<group>"; };
+		979BDF3D29A91F8000C24421 /* UIViewController-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController-Extension.swift"; sourceTree = "<group>"; };
+		979BDF3F29A9229800C24421 /* TopContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopContentView.swift; sourceTree = "<group>"; };
+		979BDF4129A934A200C24421 /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		979BDF4329A93B2A00C24421 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				979BDF2829A8CFA600C24421 /* Sport */,
+				979BDF3829A9070400C24421 /* ChosenSport */,
 				979BDF2929A8CFB100C24421 /* SettingsViewModel */,
 			);
 			path = Modules;
@@ -142,6 +157,7 @@
 				979BDF2E29A8D3A600C24421 /* CustomLabel.swift */,
 				979BDF1929A7991F00C24421 /* SportImage.swift */,
 				979BDF1229A7851800C24421 /* MainView.swift */,
+				979BDF4329A93B2A00C24421 /* CustomButton.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -151,6 +167,8 @@
 			children = (
 				979BDF2329A8BD1200C24421 /* UIButton-Extension.swift */,
 				979BDF3229A8EAEE00C24421 /* UIView-Extension.swift */,
+				979BDF4129A934A200C24421 /* Dynamic.swift */,
+				979BDF3D29A91F8000C24421 /* UIViewController-Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -161,6 +179,7 @@
 				979BDED629A76E4600C24421 /* SportViewModel.swift */,
 				979BDED429A76E2F00C24421 /* SportViewController.swift */,
 				979BDEC129A764DF00C24421 /* SportView.swift */,
+				979BDF3F29A9229800C24421 /* TopContentView.swift */,
 			);
 			path = Sport;
 			sourceTree = "<group>";
@@ -173,6 +192,16 @@
 				979BDF2A29A8CFDD00C24421 /* SettingsView.swift */,
 			);
 			path = SettingsViewModel;
+			sourceTree = "<group>";
+		};
+		979BDF3829A9070400C24421 /* ChosenSport */ = {
+			isa = PBXGroup;
+			children = (
+				979BDF3629A906FF00C24421 /* ChosenSportViewModel.swift */,
+				979BDF3B29A9072200C24421 /* ChosenSportViewController.swift */,
+				979BDF3929A9071900C24421 /* ChosenSportView.swift */,
+			);
+			path = ChosenSport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,8 +282,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				979BDEC229A764DF00C24421 /* SportView.swift in Sources */,
+				979BDF3E29A91F8000C24421 /* UIViewController-Extension.swift in Sources */,
 				979BDF2F29A8D3A600C24421 /* CustomLabel.swift in Sources */,
 				979BDF1329A7851800C24421 /* MainView.swift in Sources */,
+				979BDF3A29A9071900C24421 /* ChosenSportView.swift in Sources */,
+				979BDF3729A906FF00C24421 /* ChosenSportViewModel.swift in Sources */,
 				979BDED729A76E4600C24421 /* SportViewModel.swift in Sources */,
 				979BDF3329A8EAEE00C24421 /* UIView-Extension.swift in Sources */,
 				979BDF1A29A7991F00C24421 /* SportImage.swift in Sources */,
@@ -263,9 +295,13 @@
 				979BDF2429A8BD1200C24421 /* UIButton-Extension.swift in Sources */,
 				979BDF2729A8CF9500C24421 /* SettingsViewModel.swift in Sources */,
 				979BDED529A76E2F00C24421 /* SportViewController.swift in Sources */,
+				979BDF3C29A9072200C24421 /* ChosenSportViewController.swift in Sources */,
 				979BDF3529A8F37000C24421 /* SwitchButton.swift in Sources */,
+				979BDF4229A934A200C24421 /* Dynamic.swift in Sources */,
+				979BDF4029A9229800C24421 /* TopContentView.swift in Sources */,
 				979BDF2D29A8CFE600C24421 /* SettingsViewController.swift in Sources */,
 				979BDF0D29A77D3A00C24421 /* SportViewModelType.swift in Sources */,
+				979BDF4429A93B2A00C24421 /* CustomButton.swift in Sources */,
 				979BDF1629A78C3400C24421 /* ChooseSportButton.swift in Sources */,
 				979BDF1E29A7A55100C24421 /* UIColor-Extensions.swift in Sources */,
 				979BDF2B29A8CFDD00C24421 /* SettingsView.swift in Sources */,

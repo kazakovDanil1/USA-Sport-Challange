@@ -32,6 +32,7 @@ class ChooseSportButton:
     convenience init(image: String, size: CGSize) {
         self.init(frame: .zero)
         let choosen = SportImage(image: image, size: size)
+        choosen.layer.opacity = 0.3
         addSubview(choosen)
         
         choosen.frame = self.bounds
@@ -39,6 +40,7 @@ class ChooseSportButton:
         setImage(
             choosen.image, for: .normal
         )
+        
         
     }
     

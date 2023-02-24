@@ -21,7 +21,7 @@ class SettingsView:
         let button = SwitchButton()
         button.addTarget(
             self,
-            action: #selector(UIButton().switchAble),
+            action: #selector(UIButton().switchable),
             for: .touchUpInside
         )
         
@@ -32,14 +32,14 @@ class SettingsView:
         let button = SwitchButton()
         button.addTarget(
             self,
-            action: #selector(UIButton().switchAble),
+            action: #selector(UIButton().switchable),
             for: .touchUpInside
         )
         
         return button
     }()
     
-    
+    let backButton = CustomButton(title: "back")
     
     let soundLabel = CustomLabel(
         title: "SOUND",
@@ -107,6 +107,9 @@ class SettingsView:
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        
+        contentView.addSubview(backButton)
         
         commonInit()
         layoutIfNeeded()
@@ -201,6 +204,14 @@ extension SettingsView
             make.bottom.equalTo(soundButton.snp.top) .offset(-10)
             make.top.equalToSuperview() .offset(20)
         }
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.centerY) .offset(100)
+            make.height.equalTo(50)
+            make.leading.equalToSuperview() .offset(20)
+            make.trailing.equalToSuperview() .offset(-20)
+        }
+    
         
     }
 }

@@ -8,9 +8,10 @@ class SportViewController:
     UIViewController
 {
     private lazy var contentView = self.view as? SportView
+    private let settingsViewController = SettingsViewController()
+    private let chosenSportViewController = ChosenSportViewController()
     
-    let viewModel: SportViewModelType
-    let settingsViewController = SettingsViewController()
+    private let viewModel: SportViewModelType
     
     override func loadView() {
         self.view = SportView(frame: UIScreen.main.bounds)
@@ -26,23 +27,11 @@ class SportViewController:
         super.viewDidLoad()
             
         addTargets()
+        bind()
     }
     
-    func addTargets() {
-        contentView?.settingsButton.addTarget(
-            self,
-            action: #selector(callSettings),
-            for: .touchUpInside
-        )
-    }
-    
-    @objc func callSettings() {
-        //settings
-        addChild(settingsViewController)
-        self.view.addSubview(settingsViewController.view)
-        settingsViewController.didMove(toParent: self)
-        makeConstraintsForSettings()
-        //notifications
+    func bind() {
+        
     }
     
     required init(coder: NSCoder) {
@@ -53,13 +42,49 @@ class SportViewController:
 extension SportViewController
 {
     
-    func makeConstraintsForSettings() {
-        guard let contentView = contentView else { return }
-        
-        settingsViewController.view.snp.makeConstraints { make in
-            make.top.equalTo(contentView.topContentView.snp.bottomMargin) .offset(10)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
+    @objc func callSettings() {
+        guard let contentView = contentView
+        else {
+            return
         }
+    
+        addChildViewController(
+            settingsViewController,
+            on: contentView.contentView
+        )
     }
+    
+    @objc func callChosenSport() {
+        guard let contentView = contentView
+        else {
+            return
+        }
+
+        addChildViewController(
+            chosenSportViewController,
+            on: contentView.contentView
+        )
+    }
+    
+    func remove() {
+        removeChildView()
+    }
+    
+    func addTargets() {
+        guard let contentView = contentView
+        else {
+            return
+        }
+        contentView.topContentView.settingsButton.addTarget(
+            self,
+            action: #selector(callSettings),
+            for: .touchUpInside
+        )
+        contentView.topContentView.notifyButton.addTarget(
+            self,
+            action: #selector(callChosenSport),
+            for: .touchUpInside
+        )
+    }
+
 }

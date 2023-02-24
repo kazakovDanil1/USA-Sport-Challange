@@ -3,5 +3,7 @@
 
 class SettingsViewModel
 {
-    
+    func sayHi() {
+        print("hello")
+    }
 }
