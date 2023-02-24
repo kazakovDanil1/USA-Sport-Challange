@@ -15,6 +15,19 @@
 		979BDED529A76E2F00C24421 /* SportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDED429A76E2F00C24421 /* SportViewController.swift */; };
 		979BDED729A76E4600C24421 /* SportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDED629A76E4600C24421 /* SportViewModel.swift */; };
 		979BDF0929A77B6B00C24421 /* IDETemplateMacros.plist in Resources */ = {isa = PBXBuildFile; fileRef = 979BDF0829A77B6B00C24421 /* IDETemplateMacros.plist */; };
+		979BDF0D29A77D3A00C24421 /* SportViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF0C29A77D3A00C24421 /* SportViewModelType.swift */; };
+		979BDF1129A7839700C24421 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 979BDF1029A7839700C24421 /* SnapKit */; };
+		979BDF1329A7851800C24421 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF1229A7851800C24421 /* MainView.swift */; };
+		979BDF1629A78C3400C24421 /* ChooseSportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF1529A78C3400C24421 /* ChooseSportButton.swift */; };
+		979BDF1A29A7991F00C24421 /* SportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF1929A7991F00C24421 /* SportImage.swift */; };
+		979BDF1E29A7A55100C24421 /* UIColor-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF1D29A7A55100C24421 /* UIColor-Extensions.swift */; };
+		979BDF2429A8BD1200C24421 /* UIButton-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF2329A8BD1200C24421 /* UIButton-Extension.swift */; };
+		979BDF2729A8CF9500C24421 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF2629A8CF9500C24421 /* SettingsViewModel.swift */; };
+		979BDF2B29A8CFDD00C24421 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF2A29A8CFDD00C24421 /* SettingsView.swift */; };
+		979BDF2D29A8CFE600C24421 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF2C29A8CFE600C24421 /* SettingsViewController.swift */; };
+		979BDF2F29A8D3A600C24421 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF2E29A8D3A600C24421 /* CustomLabel.swift */; };
+		979BDF3329A8EAEE00C24421 /* UIView-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3229A8EAEE00C24421 /* UIView-Extension.swift */; };
+		979BDF3529A8F37000C24421 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDF3429A8F37000C24421 /* SwitchButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +41,18 @@
 		979BDED429A76E2F00C24421 /* SportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportViewController.swift; sourceTree = "<group>"; };
 		979BDED629A76E4600C24421 /* SportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportViewModel.swift; sourceTree = "<group>"; };
 		979BDF0829A77B6B00C24421 /* IDETemplateMacros.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = IDETemplateMacros.plist; sourceTree = "<group>"; };
+		979BDF0C29A77D3A00C24421 /* SportViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportViewModelType.swift; sourceTree = "<group>"; };
+		979BDF1229A7851800C24421 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		979BDF1529A78C3400C24421 /* ChooseSportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSportButton.swift; sourceTree = "<group>"; };
+		979BDF1929A7991F00C24421 /* SportImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportImage.swift; sourceTree = "<group>"; };
+		979BDF1D29A7A55100C24421 /* UIColor-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extensions.swift"; sourceTree = "<group>"; };
+		979BDF2329A8BD1200C24421 /* UIButton-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton-Extension.swift"; sourceTree = "<group>"; };
+		979BDF2629A8CF9500C24421 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		979BDF2A29A8CFDD00C24421 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		979BDF2C29A8CFE600C24421 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		979BDF2E29A8D3A600C24421 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		979BDF3229A8EAEE00C24421 /* UIView-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Extension.swift"; sourceTree = "<group>"; };
+		979BDF3429A8F37000C24421 /* SwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				979BDF1129A7839700C24421 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				979BDED129A765EE00C24421 /* App */,
+				979BDF2529A8CD8B00C24421 /* Extensions */,
+				979BDF0E29A77D4400C24421 /* Protocols */,
 				979BDED329A7665600C24421 /* Modules */,
+				979BDF1429A7851F00C24421 /* CustomElements */,
 				979BDED229A7664A00C24421 /* Resources */,
 			);
 			path = "USA Sport Challenge";
@@ -81,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				979BDEC629A764E800C24421 /* Assets.xcassets */,
+				979BDF1D29A7A55100C24421 /* UIColor-Extensions.swift */,
 				979BDEC829A764E800C24421 /* LaunchScreen.storyboard */,
 				979BDF0829A77B6B00C24421 /* IDETemplateMacros.plist */,
 			);
@@ -90,11 +120,59 @@
 		979BDED329A7665600C24421 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				979BDF2829A8CFA600C24421 /* Sport */,
+				979BDF2929A8CFB100C24421 /* SettingsViewModel */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		979BDF0E29A77D4400C24421 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				979BDF0C29A77D3A00C24421 /* SportViewModelType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		979BDF1429A7851F00C24421 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				979BDF1529A78C3400C24421 /* ChooseSportButton.swift */,
+				979BDF3429A8F37000C24421 /* SwitchButton.swift */,
+				979BDF2E29A8D3A600C24421 /* CustomLabel.swift */,
+				979BDF1929A7991F00C24421 /* SportImage.swift */,
+				979BDF1229A7851800C24421 /* MainView.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		979BDF2529A8CD8B00C24421 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				979BDF2329A8BD1200C24421 /* UIButton-Extension.swift */,
+				979BDF3229A8EAEE00C24421 /* UIView-Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		979BDF2829A8CFA600C24421 /* Sport */ = {
+			isa = PBXGroup;
+			children = (
 				979BDED629A76E4600C24421 /* SportViewModel.swift */,
 				979BDED429A76E2F00C24421 /* SportViewController.swift */,
 				979BDEC129A764DF00C24421 /* SportView.swift */,
 			);
-			path = Modules;
+			path = Sport;
+			sourceTree = "<group>";
+		};
+		979BDF2929A8CFB100C24421 /* SettingsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				979BDF2629A8CF9500C24421 /* SettingsViewModel.swift */,
+				979BDF2C29A8CFE600C24421 /* SettingsViewController.swift */,
+				979BDF2A29A8CFDD00C24421 /* SettingsView.swift */,
+			);
+			path = SettingsViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +191,9 @@
 			dependencies = (
 			);
 			name = "USA Sport Challenge";
+			packageProductDependencies = (
+				979BDF1029A7839700C24421 /* SnapKit */,
+			);
 			productName = "USA Sport Challenge";
 			productReference = 979BDEBA29A764DF00C24421 /* USA Sport Challenge.app */;
 			productType = "com.apple.product-type.application";
@@ -141,6 +222,9 @@
 				Base,
 			);
 			mainGroup = 979BDEB129A764DF00C24421;
+			packageReferences = (
+				979BDF0F29A7839700C24421 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 979BDEBB29A764DF00C24421 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -169,10 +253,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				979BDEC229A764DF00C24421 /* SportView.swift in Sources */,
+				979BDF2F29A8D3A600C24421 /* CustomLabel.swift in Sources */,
+				979BDF1329A7851800C24421 /* MainView.swift in Sources */,
 				979BDED729A76E4600C24421 /* SportViewModel.swift in Sources */,
+				979BDF3329A8EAEE00C24421 /* UIView-Extension.swift in Sources */,
+				979BDF1A29A7991F00C24421 /* SportImage.swift in Sources */,
 				979BDEBE29A764DF00C24421 /* AppDelegate.swift in Sources */,
 				979BDEC029A764DF00C24421 /* SceneDelegate.swift in Sources */,
+				979BDF2429A8BD1200C24421 /* UIButton-Extension.swift in Sources */,
+				979BDF2729A8CF9500C24421 /* SettingsViewModel.swift in Sources */,
 				979BDED529A76E2F00C24421 /* SportViewController.swift in Sources */,
+				979BDF3529A8F37000C24421 /* SwitchButton.swift in Sources */,
+				979BDF2D29A8CFE600C24421 /* SettingsViewController.swift in Sources */,
+				979BDF0D29A77D3A00C24421 /* SportViewModelType.swift in Sources */,
+				979BDF1629A78C3400C24421 /* ChooseSportButton.swift in Sources */,
+				979BDF1E29A7A55100C24421 /* UIColor-Extensions.swift in Sources */,
+				979BDF2B29A8CFDD00C24421 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +484,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		979BDF0F29A7839700C24421 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		979BDF1029A7839700C24421 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 979BDF0F29A7839700C24421 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 979BDEB229A764DF00C24421 /* Project object */;
 }
