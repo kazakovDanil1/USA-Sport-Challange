@@ -7,14 +7,15 @@ import SnapKit
 class SportView:
     UIView
 {
+    let topContentView = TopContentView()
+    
     let contentView = MainView("GrayBackground")
     
-    let topContentView = TopContentView()
+    let sportMenuButton = SportMenuButton()
     
     private let chooseSport = ChooseSportButton(
         frame: .zero
     )
-    
     private let hockey = SportImage(
         image: "Hockey"
     )
@@ -27,25 +28,31 @@ class SportView:
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+                
         commonInit()
         layoutIfNeeded()
         updateConstraintsIfNeeded()
-    }
-    
-    required init(coder: NSCoder) {
-        fatalError()
+        setNeedsLayout()
     }
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
-        addSubviews()
+        
+        contentView.addSubview(sportMenuButton)
+        sportMenuButton.frame = self.bounds
+        
+        contentView.addSubview(sportMenuButton)
+        //addSubviews()
     }
     
     override func updateConstraintsIfNeeded() {
         super.layoutIfNeeded()
         makeMainConstraints()
-        makeConstraints()
+        //makeConstraints()
+    }
+    
+    required init(coder: NSCoder) {
+        fatalError()
     }
 }
 
@@ -75,7 +82,6 @@ extension SportView
             make.trailing.equalToSuperview()
             make.height.equalTo(UIScreen.main.bounds.height / 6)
         }
-        
         contentView.snp.makeConstraints
         { make in
             make.top.equalTo(topContentView.snp.bottom)

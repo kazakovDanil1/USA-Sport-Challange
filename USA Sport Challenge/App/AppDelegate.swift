@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import EasyAnimation
 
 @main
 class AppDelegate:
@@ -17,6 +18,8 @@ class AppDelegate:
         didFinishLaunchingWithOptions launchOptions: [
             UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+        
+        EasyAnimation.enable()
         
         return true
     }

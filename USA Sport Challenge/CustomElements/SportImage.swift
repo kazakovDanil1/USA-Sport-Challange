@@ -21,7 +21,6 @@ class SportImage:
         self.image = UIImage(named: image)
     }
     
-    
     convenience init(image: String, size: CGSize) {
         self.init(frame: .zero)
         self.image = UIImage(named: image)
