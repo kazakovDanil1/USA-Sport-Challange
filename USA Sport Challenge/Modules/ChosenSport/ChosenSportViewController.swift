@@ -8,20 +8,42 @@ class ChosenSportViewController:
 {
     private lazy var contentView = self.view as? ChosenSportView
     
-    let viewModel = ChosenSportViewModel()
+    private let viewModel = ChosenSportViewModel()
     
+    weak var delegate: ReturnBackFromViewControllerDelegate?
+        
     override func loadView() {
         self.view = ChosenSportView(frame: UIScreen.main.bounds)
-        print("ChosenSportViewController is loaded")
+    }
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        addTarget()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        contentView?.exampleView.makeShadows(radius: 5, shadowOpacity: 0.5)
+        contentView?.backButton.makeShadows(radius: 5, shadowOpacity: 0.5)
     }
     
-    deinit {
-        print("dealocated")
+}
+
+extension ChosenSportViewController
+{
+    func addTarget() {
+        contentView?.backButton.addTarget(
+            self,
+            action: #selector(returnBack),
+            for: .touchUpInside
+        )
+    }
+    @objc func returnBack() {
+        guard let delegate = delegate
+        else {
+            return
+        }
+        delegate.returnBack(self)
     }
 }

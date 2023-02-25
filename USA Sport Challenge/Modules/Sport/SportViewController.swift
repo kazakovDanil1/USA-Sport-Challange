@@ -4,17 +4,28 @@
 import UIKit
 import SnapKit
 
-class SportViewController:
-    UIViewController
+protocol ReturnBackFromViewControllerDelegate: AnyObject
 {
+    func returnBack(_ from: UIViewController)
+}
+
+
+class SportViewController:
+    UIViewController,
+    ReturnBackFromViewControllerDelegate
+{
+
     private lazy var contentView = self.view as? SportView
     private let settingsViewController = SettingsViewController()
     private let chosenSportViewController = ChosenSportViewController()
     
-    private let viewModel: SportViewModelType
+    private let viewModel: SportViewModelType?
     
     override func loadView() {
         self.view = SportView(frame: UIScreen.main.bounds)
+    }
+    func returnBack(_ from: UIViewController) {
+        removeChildViewController(from)
     }
     
     init(viewModel: SportViewModelType) {
@@ -41,17 +52,17 @@ class SportViewController:
 
 extension SportViewController
 {
-    
     @objc func callSettings() {
         guard let contentView = contentView
         else {
             return
         }
-    
+        
         addChildViewController(
             settingsViewController,
             on: contentView.contentView
         )
+        settingsViewController.delegate = self
     }
     
     @objc func callChosenSport() {
@@ -64,6 +75,7 @@ extension SportViewController
             chosenSportViewController,
             on: contentView.contentView
         )
+        chosenSportViewController.delegate = self
     }
     
     func remove() {

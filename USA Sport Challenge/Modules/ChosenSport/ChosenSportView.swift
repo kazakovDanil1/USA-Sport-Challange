@@ -2,18 +2,14 @@
 //USA Sport Challenge in 2023
 
 import UIKit
+import SnapKit
 
 class ChosenSportView:
     UIView
 {
     let contentView = MainView("GrayBackground")
     
-    let exampleView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        
-        return view
-    }()
+    lazy var backButton = CustomButton(title: "back")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,19 +44,22 @@ extension ChosenSportView
         contentView.frame = self.bounds
     }
     
-    func makeConstraints() {
-        exampleView.snp.makeConstraints
-        { make in
-            make.height.width.equalTo(300)
-        }
-        
-    }
-    
     func addSubs() {
         [
-        exampleView
+            backButton
         ].forEach({
             contentView.addSubview($0)
         })
     }
+    
+    func makeConstraints() {
+        backButton.snp.makeConstraints { make in
+           
+            make.leading.equalTo(contentView.snp.leading) .offset(20)
+            make.trailing.equalTo(contentView.snp.trailing) .offset(-20)
+            make.top.equalTo(contentView.snp.top) .offset(50)
+        }
+        
+    }
+
 }

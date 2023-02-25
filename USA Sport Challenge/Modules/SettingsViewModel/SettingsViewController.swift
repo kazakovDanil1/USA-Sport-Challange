@@ -6,13 +6,19 @@ import UIKit
 class SettingsViewController:
     UIViewController
 {
-    
     private lazy var contentView = self.view as? SettingsView
     
     private let viewModel = SettingsViewModel()
     
+    weak var delegate: ReturnBackFromViewControllerDelegate?
+        
     override func loadView() {
         self.view = SettingsView(frame: UIScreen.main.bounds)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addTarget()
     }
     
     override func viewWillLayoutSubviews() {
@@ -31,9 +37,23 @@ class SettingsViewController:
         
         contentView.backButton.makeShadows(radius: 5, shadowOpacity: 0.2)
     }
-    
+
 }
 
-extension SettingsViewController {
-    
+extension SettingsViewController
+{
+    func addTarget() {
+        contentView?.backButton.addTarget(
+            self,
+            action: #selector(returnBack),
+            for: .touchUpInside
+        )
+    }
+    @objc func returnBack() {
+        guard let delegate = delegate
+        else {
+            return
+        }
+        delegate.returnBack(self)
+    }
 }
