@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		9771652E29AA2AA000D261B3 /* SportMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771652D29AA2AA000D261B3 /* SportMenuButton.swift */; };
-		9771653529AA895E00D261B3 /* SportContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771653429AA895E00D261B3 /* SportContainer.swift */; };
+		9771653F29AB4DB300D261B3 /* TopMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771653E29AB4DB300D261B3 /* TopMenuButton.swift */; };
+		9771654629AB653400D261B3 /* SpecialSportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654529AB653400D261B3 /* SpecialSportViewController.swift */; };
+		9771654829AB655B00D261B3 /* SpecialSportCellswift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654729AB655B00D261B3 /* SpecialSportCellswift.swift */; };
+		9771654A29AB660200D261B3 /* SpecialSportTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654929AB660200D261B3 /* SpecialSportTableView.swift */; };
+		9771654C29AB693A00D261B3 /* SpecialSportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654B29AB693A00D261B3 /* SpecialSportViewModel.swift */; };
+		9771654E29AB72E900D261B3 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654D29AB72E900D261B3 /* CircleButton.swift */; };
 		979BDEBE29A764DF00C24421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDEBD29A764DF00C24421 /* AppDelegate.swift */; };
 		979BDEC029A764DF00C24421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDEBF29A764DF00C24421 /* SceneDelegate.swift */; };
 		979BDEC229A764DF00C24421 /* SportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDEC129A764DF00C24421 /* SportView.swift */; };
@@ -44,7 +49,12 @@
 		1D3E12ACA61CA24012331027 /* Pods-USA Sport Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-USA Sport Challenge.debug.xcconfig"; path = "Target Support Files/Pods-USA Sport Challenge/Pods-USA Sport Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		753F8CF19CD7F77A7F818F28 /* Pods-USA Sport Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-USA Sport Challenge.release.xcconfig"; path = "Target Support Files/Pods-USA Sport Challenge/Pods-USA Sport Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		9771652D29AA2AA000D261B3 /* SportMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportMenuButton.swift; sourceTree = "<group>"; };
-		9771653429AA895E00D261B3 /* SportContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportContainer.swift; sourceTree = "<group>"; };
+		9771653E29AB4DB300D261B3 /* TopMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuButton.swift; sourceTree = "<group>"; };
+		9771654529AB653400D261B3 /* SpecialSportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialSportViewController.swift; sourceTree = "<group>"; };
+		9771654729AB655B00D261B3 /* SpecialSportCellswift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialSportCellswift.swift; sourceTree = "<group>"; };
+		9771654929AB660200D261B3 /* SpecialSportTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialSportTableView.swift; sourceTree = "<group>"; };
+		9771654B29AB693A00D261B3 /* SpecialSportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialSportViewModel.swift; sourceTree = "<group>"; };
+		9771654D29AB72E900D261B3 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		979BDEBA29A764DF00C24421 /* USA Sport Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "USA Sport Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		979BDEBD29A764DF00C24421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		979BDEBF29A764DF00C24421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,11 +121,22 @@
 			isa = PBXGroup;
 			children = (
 				979BDF3F29A9229800C24421 /* TopContentView.swift */,
+				9771653E29AB4DB300D261B3 /* TopMenuButton.swift */,
 				979BDF1229A7851800C24421 /* MainView.swift */,
 				9771652D29AA2AA000D261B3 /* SportMenuButton.swift */,
-				9771653429AA895E00D261B3 /* SportContainer.swift */,
 			);
 			path = MainUI;
+			sourceTree = "<group>";
+		};
+		9771654229AB650600D261B3 /* SpecialSport */ = {
+			isa = PBXGroup;
+			children = (
+				9771654B29AB693A00D261B3 /* SpecialSportViewModel.swift */,
+				9771654529AB653400D261B3 /* SpecialSportViewController.swift */,
+				9771654929AB660200D261B3 /* SpecialSportTableView.swift */,
+				9771654729AB655B00D261B3 /* SpecialSportCellswift.swift */,
+			);
+			path = SpecialSport;
 			sourceTree = "<group>";
 		};
 		979BDEB129A764DF00C24421 = {
@@ -177,6 +198,7 @@
 				9771653129AA419300D261B3 /* MainUI */,
 				979BDF2829A8CFA600C24421 /* Sport */,
 				979BDF3829A9070400C24421 /* ChosenSport */,
+				9771654229AB650600D261B3 /* SpecialSport */,
 				979BDF2929A8CFB100C24421 /* SettingsViewModel */,
 			);
 			path = Modules;
@@ -198,6 +220,7 @@
 				979BDF3429A8F37000C24421 /* SwitchButton.swift */,
 				979BDF2E29A8D3A600C24421 /* CustomLabel.swift */,
 				979BDF4329A93B2A00C24421 /* CustomButton.swift */,
+				9771654D29AB72E900D261B3 /* CircleButton.swift */,
 			);
 			path = CustomElements;
 			sourceTree = "<group>";
@@ -373,24 +396,29 @@
 			files = (
 				979BDEC229A764DF00C24421 /* SportView.swift in Sources */,
 				979BDF3E29A91F8000C24421 /* UIViewController-Extension.swift in Sources */,
+				9771654629AB653400D261B3 /* SpecialSportViewController.swift in Sources */,
 				979BDF2F29A8D3A600C24421 /* CustomLabel.swift in Sources */,
 				979BDF1329A7851800C24421 /* MainView.swift in Sources */,
 				9771652E29AA2AA000D261B3 /* SportMenuButton.swift in Sources */,
 				979BDF3A29A9071900C24421 /* ChosenSportView.swift in Sources */,
 				979BDF3729A906FF00C24421 /* ChosenSportViewModel.swift in Sources */,
 				979BDED729A76E4600C24421 /* SportViewModel.swift in Sources */,
+				9771653F29AB4DB300D261B3 /* TopMenuButton.swift in Sources */,
+				9771654A29AB660200D261B3 /* SpecialSportTableView.swift in Sources */,
+				9771654E29AB72E900D261B3 /* CircleButton.swift in Sources */,
 				979BDF3329A8EAEE00C24421 /* UIView-Extension.swift in Sources */,
 				979BDF1A29A7991F00C24421 /* SportImage.swift in Sources */,
 				979BDEBE29A764DF00C24421 /* AppDelegate.swift in Sources */,
 				979BDEC029A764DF00C24421 /* SceneDelegate.swift in Sources */,
+				9771654C29AB693A00D261B3 /* SpecialSportViewModel.swift in Sources */,
 				979BDF2429A8BD1200C24421 /* UIButton-Extension.swift in Sources */,
 				979BDF2729A8CF9500C24421 /* SettingsViewModel.swift in Sources */,
 				979BDED529A76E2F00C24421 /* SportViewController.swift in Sources */,
 				979BDF3C29A9072200C24421 /* ChosenSportViewController.swift in Sources */,
-				9771653529AA895E00D261B3 /* SportContainer.swift in Sources */,
 				979BDF3529A8F37000C24421 /* SwitchButton.swift in Sources */,
 				979BDF4229A934A200C24421 /* Dynamic.swift in Sources */,
 				979BDF4029A9229800C24421 /* TopContentView.swift in Sources */,
+				9771654829AB655B00D261B3 /* SpecialSportCellswift.swift in Sources */,
 				979BDF2D29A8CFE600C24421 /* SettingsViewController.swift in Sources */,
 				979BDF0D29A77D3A00C24421 /* SportViewModelType.swift in Sources */,
 				979BDF4429A93B2A00C24421 /* CustomButton.swift in Sources */,

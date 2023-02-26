@@ -7,29 +7,12 @@ import SnapKit
 class TopContentView:
     UIView
 {
-    let notifyButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(named: "NotifyBell")
-        button.setImage(image, for: .normal)
-        button.addTarget(
-            nil,
-            action: #selector(UIButton().underline),
-            for: .touchUpInside
-        )
-        return button
-    }()
+    let notifyButton = TopMenuButton(image: "NotifyBell")
+    let settingsButton = TopMenuButton(image: "SettingsGear")
     
-    let settingsButton: UIButton = {
-        let button = UIButton(type: .system)
-        let image = UIImage(named: "SettingsGear")
-        button.setImage(image, for: .normal)
-        button.addTarget(
-            nil,
-            action: #selector(UIButton().underline),
-            for: .touchUpInside
-        )
-        return button
-    }()
+    let endedButton = TopMenuButton(title: "Ended")
+    let liveButton = TopMenuButton(title: "Live")
+    let comingButton = TopMenuButton(title: "Coming up")
     
     lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
@@ -43,6 +26,20 @@ class TopContentView:
         return stackView
     }()
     
+    lazy var matchStatesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        
+        stackView.addArrangedSubview(endedButton)
+        stackView.addArrangedSubview(liveButton)
+        stackView.addArrangedSubview(comingButton)
+        stackView.isHidden = true
+        
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -50,6 +47,22 @@ class TopContentView:
         layoutIfNeeded()
         updateConstraintsIfNeeded()
     }
+    
+//    override func hitTest(
+//        _ point: CGPoint,
+//        with event: UIEvent?
+//    ) -> UIView? {
+//       let biggerButtonFrame = matchStatesStackView.frame.insetBy(
+//        dx: -30,
+//        dy: -30
+//       ) // 1
+//
+//       if biggerButtonFrame.contains(point) { // 2
+//          return matchStatesStackView // 3
+//       }
+//
+//       return super.hitTest(point, with: event) // 4
+//    }
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -71,6 +84,7 @@ extension TopContentView
     
     func addSubviews() {
        addSubview(buttonStackView)
+       addSubview(matchStatesStackView)
     }
     
     func makeConstraints() {
@@ -79,6 +93,13 @@ extension TopContentView
         { make in
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview() .inset(10)
+            make.height.equalTo(50)
+        }
+        
+        matchStatesStackView.snp.makeConstraints
+        { make in
+            make.trailing.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
             make.height.equalTo(50)
         }
     }

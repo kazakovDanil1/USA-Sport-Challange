@@ -13,11 +13,8 @@ class SportView:
     
     let sportMenuButton = SportMenuButton()
     
-    private let chooseSport = ChooseSportButton(
-        frame: .zero
-    )
-    private let hockey = SportImage(
-        image: "Hockey"
+    private let baseBall = SportImage(
+        image: "BaseBall"
     )
     private let americanFootBall = SportImage(
         image: "AmericanFootBall"
@@ -26,29 +23,31 @@ class SportView:
         image: "BasketBall"
     )
     
+    
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
         commonInit()
         layoutIfNeeded()
         updateConstraintsIfNeeded()
-        setNeedsLayout()
     }
+    
+
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
         
-        contentView.addSubview(sportMenuButton)
         sportMenuButton.frame = self.bounds
         
-        contentView.addSubview(sportMenuButton)
-        //addSubviews()
+        addSubviews()
     }
     
     override func updateConstraintsIfNeeded() {
         super.layoutIfNeeded()
         makeMainConstraints()
-        //makeConstraints()
+        makeConstraints()
     }
     
     required init(coder: NSCoder) {
@@ -65,12 +64,12 @@ extension SportView
     
     func addSubviews() {
         [
-            chooseSport
+            sportMenuButton
         ].forEach {contentView.addSubview($0)}
         
-        chooseSport.addSubview(hockey)
-        chooseSport.addSubview(americanFootBall)
-        chooseSport.addSubview(basketBall)
+        sportMenuButton.addSubview(baseBall)
+        sportMenuButton.addSubview(americanFootBall)
+        sportMenuButton.addSubview(basketBall)
     }
     
     func makeMainConstraints() {
@@ -91,26 +90,10 @@ extension SportView
     }
     
     func makeConstraints() {
-        
-        chooseSport.snp.makeConstraints
+        basketBall.snp.makeConstraints
         { make in
-            make.centerX.centerY.equalToSuperview()
-        }
-        
-        hockey.snp.makeConstraints
-        { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(chooseSport.snp.centerX) .offset(-20)
-        }
-        
-        americanFootBall.snp.makeConstraints
-        { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalTo(chooseSport.snp.centerX) .offset(-20)
-        }
-        
-        basketBall.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview() .offset(-100)
         }
     }
 }

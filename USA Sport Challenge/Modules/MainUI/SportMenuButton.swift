@@ -11,6 +11,7 @@ enum AnimationDirection: String {
     case halfPastFour = "halfPastFour"
     case halfPastSeven = "halfPastSeven"
     case nine = "nine"
+    case drop = "drop"
 }
 
 class SportMenuButton:
@@ -19,7 +20,7 @@ class SportMenuButton:
     
     lazy var americanFootBallContainer: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "vector1"), for: .normal)
+        button.setImage(UIImage(named: "1"), for: .normal)
         button.isHidden = true
         //        AmericanFootBall
         
@@ -27,7 +28,7 @@ class SportMenuButton:
     }()
     lazy var baseBallContainer: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "vector2"), for: .normal)
+        button.setImage(UIImage(named: "2"), for: .normal)
         button.isHidden = true
         //        BaseBall
         
@@ -35,7 +36,7 @@ class SportMenuButton:
     }()
     lazy var footBallContainer: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "vector3"), for: .normal)
+        button.setImage(UIImage(named: "3"), for: .normal)
         button.isHidden = true
         //        FootBall
         
@@ -43,7 +44,7 @@ class SportMenuButton:
     }()
     lazy var basketBallContainer: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "vector4"), for: .normal)
+        button.setImage(UIImage(named: "4"), for: .normal)
         button.isHidden = true
         //        BasketBall
         
@@ -51,7 +52,7 @@ class SportMenuButton:
     }()
     lazy var HockeyContainer: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "vector5"), for: .normal)
+        button.setImage(UIImage(named: "5"), for: .normal)
         button.isHidden = true
         //        Hockey
         
@@ -74,8 +75,8 @@ class SportMenuButton:
         self.addSubview(footBallContainer)
         self.addSubview(HockeyContainer)
         
-        
         self.addSubview(chooseSport)
+        
         chooseSport.addTarget(
             nil,
             action: #selector(circleSlideAnimate),
@@ -93,7 +94,7 @@ class SportMenuButton:
     
     func makeConstraints() {
         chooseSport.snp.makeConstraints { make in
-            make.centerY.equalToSuperview() .offset(-50)
+            make.centerY.equalToSuperview() .offset(-100)
             make.centerX.equalToSuperview()
         }
         
@@ -169,6 +170,7 @@ class SportMenuButton:
                         withDuration: 1.0,
                         animations: {
                             object.isHidden = false
+                            object.alpha = 1
                             object.layer.frame = CGRect(
                                 x: self.chooseSport.frame.origin.x + 20,
                                 y: self.chooseSport.frame.origin.y - 75,
@@ -180,8 +182,9 @@ class SportMenuButton:
                         withDuration: 1.0,
                         animations: {
                             object.isHidden = false
+                            object.alpha = 1
                             object.layer.frame = CGRect(
-                                x: self.chooseSport.frame.origin.x + 165,
+                                x: self.chooseSport.frame.origin.x + 160,
                                 y: self.chooseSport.frame.origin.y + 20,
                                 width: 75,
                                 height: 125
@@ -191,9 +194,10 @@ class SportMenuButton:
                         withDuration: 1.0,
                         animations: {
                             object.isHidden = false
+                            object.alpha = 1
                             object.layer.frame = CGRect(
                                 x: self.chooseSport.frame.origin.x + 85,
-                                y: self.chooseSport.frame.origin.y + 175,
+                                y: self.chooseSport.frame.origin.y + 155,
                                 width: 125,
                                 height: 100
                             )})
@@ -202,9 +206,10 @@ class SportMenuButton:
                         withDuration: 1.0,
                         animations: {
                             object.isHidden = false
+                            object.alpha = 1
                             object.layer.frame = CGRect(
                                 x: self.chooseSport.frame.origin.x - 50,
-                                y: self.chooseSport.frame.origin.y + 175,
+                                y: self.chooseSport.frame.origin.y + 155,
                                 width: 125,
                                 height: 100
                             )})
@@ -213,28 +218,35 @@ class SportMenuButton:
                         withDuration: 1.0,
                         animations: {
                             object.isHidden = false
+                            object.alpha = 1
                             object.layer.frame = CGRect(
                                 x: self.chooseSport.frame.origin.x - 75,
                                 y: self.chooseSport.frame.origin.y + 20,
                                 width: 75,
                                 height: 125
                             )})
-                    
+                case .drop:
+                    UIView.animate(withDuration: 1.0) {
+                        object.isHidden = false
+                        object.alpha = 1
+                        object.layer.frame.origin = CGPoint(
+                            x: object.frame.origin.x,
+                            y: object.frame.origin.y + 50
+                        )
+                    }
                 }
             } else if !(object.isHidden) {
                 UIView.animate(
-                    withDuration: 1.0,
+                    withDuration: 2.0,
                     animations: {
-                        object.layer.frame = CGRect(
-                            x: self.chooseSport.frame.minX + 20,
-                            y: self.chooseSport.frame.minY + 20,
-                            width: object.frame.size.width,
-                            height: object.frame.size.height
-                        )})
-                DispatchQueue.main.asyncAfter(
-                    deadline: .now() + 1) {
-                        object.isHidden = true
-                    }
+                        object.alpha = 0
+                    })
+                
+                UIView.animate(withDuration: 0.1) {
+                    
+                    object.layer.frame.origin.y -= 50
+                }
+                object.isHidden = true
             }
         }
         

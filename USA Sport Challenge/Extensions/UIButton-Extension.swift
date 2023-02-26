@@ -28,9 +28,19 @@ extension UIButton
 
     }
     
+    func addUnderLine() {
+        self.addTarget(
+            self,
+            action: #selector(underline),
+            for: .touchUpInside
+        )
+    }
+    
     @objc func underline() {
         if self.isHighlighted {
             self.addSubview(UIButton.greenIndicator)
         }
+        
+        print("underline")
     }
 }
