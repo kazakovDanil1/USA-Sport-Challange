@@ -67,7 +67,6 @@ extension SportView
     }
     
     func makeMainConstraints() {
-
         topContentView.snp.makeConstraints
         { make in
             make.top.equalToSuperview()
@@ -82,7 +81,6 @@ extension SportView
             make.bottom.equalToSuperview()
         }
     }
-    
     func makeConstraints() {
         basketBall.snp.makeConstraints
         { make in

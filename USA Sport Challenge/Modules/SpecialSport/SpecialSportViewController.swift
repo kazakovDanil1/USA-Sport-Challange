@@ -100,11 +100,11 @@ extension SpecialSportViewController:
         
         DispatchQueue.main.async { [weak self] in
             
-            self?.indicator.stopAnimatingIndicator()
-            
             contentView.dateLabel.text = game.timer
             contentView.score.text = game.score
-
+            
+            matchVC.matchDetailsViewModel.fetchStatisticFrom(game.gameID)
+            
 //MARK: - HOME
             contentView.firstTeamPic.sd_setImage(
                 with:Constants.teamPic(

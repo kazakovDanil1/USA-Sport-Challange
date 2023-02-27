@@ -27,6 +27,22 @@ class SpecialSportViewModel:
         self.sport = sport
     }
     
+    func fetchDetails(teamID: String) {
+        let link = Constants.createDetailsURL(
+            link: Constants.Links.MatchDetails,
+            teamID: teamID
+        )
+        NetworkManager.shared.downloadMatchDetails(
+            link: link) { result in
+                switch result {
+                case .success(let matchDetails):
+                    print(matchDetails)
+                case .failure(let error):
+                    print("Error: - \(error.localizedDescription)")
+                }
+            }
+    }
+    
     func fetchMatches(_ forSport: Sport) {
         let link: String
         switch forSport {
@@ -67,10 +83,5 @@ class SpecialSportViewModel:
                     print("Error: - \(error.localizedDescription)")
                 }
             }
-
     }
-    
-    
-    
-    
 }

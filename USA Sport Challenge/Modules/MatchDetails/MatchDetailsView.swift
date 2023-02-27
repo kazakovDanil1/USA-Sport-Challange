@@ -34,17 +34,30 @@ class MatchDetailsView:
         return label
     }()
     
-    let statisticStackView: UIStackView = {
+    let statisticLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = UIColor().AppGreenColor
+        label.font = .systemFont(ofSize: 25, weight: .bold)
+        
+        label.attributedText = NSAttributedString(string: "STATISTIC", attributes: [
+            .underlineColor: UIColor.black.cgColor,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ])
+
+        
+        return label
+    }()
+    
+    var statisticStackView: UIStackView = {
         let stackView = UIStackView()
-        
-        
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 10
         
         
         return stackView
     }()
-    
-    
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -104,14 +117,14 @@ extension MatchDetailsView
         
         [dateLabel, score,
          firstTeamPic, firstTeamPicLabel,
-         secondTeamPic, secondTeamPicLabel
+         secondTeamPic, secondTeamPicLabel,
+         statisticStackView, statisticLabel
         ].forEach {contentView.addSubview($0)}
-        
     }
     
     func makeConstraints() {
         dateLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview() .offset(50)
+            make.top.equalToSuperview() .offset(70)
             make.centerX.equalTo(score.snp.centerX)
         }
         score.snp.makeConstraints { make in
@@ -122,7 +135,7 @@ extension MatchDetailsView
         //MARK: - FIRST TEAM
         firstTeamPic.snp.makeConstraints { make in
             make.leading.equalToSuperview() .offset(40)
-            make.top.equalTo(dateLabel.snp.bottom) .offset(10)
+            make.top.equalTo(dateLabel.snp.bottom) .offset(20)
             make.height.width.equalTo(100)
         }
         
@@ -133,7 +146,7 @@ extension MatchDetailsView
         //MARK: - SECOND TEAM
         secondTeamPic.snp.makeConstraints { make in
             make.trailing.equalToSuperview() .offset(-40)
-            make.top.equalTo(dateLabel.snp.bottom) .offset(10)
+            make.top.equalTo(dateLabel.snp.bottom) .offset(20)
             make.height.width.equalTo(100)
         }
         secondTeamPicLabel.snp.makeConstraints { make in
@@ -141,8 +154,16 @@ extension MatchDetailsView
             make.top.equalTo(secondTeamPic.snp.bottom)
         }
         
+        statisticLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstTeamPicLabel.snp.bottom) .offset(10)
+            make.leading.equalToSuperview() .offset(10)
+            make.trailing.equalToSuperview()
+        }
         
+        statisticStackView.snp.makeConstraints { make in
+            make.top.equalTo(statisticLabel.snp.bottom) .offset(10)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
     }
-    
-    
 }

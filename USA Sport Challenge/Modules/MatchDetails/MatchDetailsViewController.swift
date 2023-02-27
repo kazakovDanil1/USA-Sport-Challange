@@ -13,8 +13,34 @@ class MatchDetailsViewController:
     
     private let backButton = CircleButton(action: #selector(returnBack))
     
+    let matchDetailsViewModel = MatchDetailsViewModel()
+    
     override func loadView() {
         self.view = MatchDetailsView(frame: UIScreen.main.bounds)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        bind()
+    }
+    
+    func bind() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self,
+                  let contentView = self.contentView
+            else {
+                return
+            }
+            self.matchDetailsViewModel.match.bind
+            { [weak self] match in
+                self?.matchDetailsViewModel.fill(contentView.statisticStackView)
+                
+            }
+            
+        }
+
     }
     
     override func viewDidLayoutSubviews() {
