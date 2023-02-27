@@ -6,7 +6,6 @@ import UIKit
 
 extension UIView
 {
-    
     func makeShadows(radius: Int, shadowOpacity: Float) {
         layer.shadowOffset = CGSize(width: -1, height: 10)
         layer.shadowColor = UIColor.black.cgColor

@@ -11,7 +11,6 @@ class SpecialSportTableView:
  
         let view = UIImageView(image: UIImage(named: "GrayBackground"))
         backgroundView = view
-        
         backgroundColor = .white
         separatorStyle = .none
         sectionFooterHeight = 5
@@ -22,7 +21,6 @@ class SpecialSportTableView:
             forCellReuseIdentifier: SpecialSportCell.identifier
         )
     }
-    
     required init?(coder: NSCoder) {
         fatalError()
     }

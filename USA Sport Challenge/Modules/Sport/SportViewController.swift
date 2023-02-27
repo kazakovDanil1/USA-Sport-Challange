@@ -97,6 +97,7 @@ extension SportViewController
                 sport: .soccer
             )
         )
+        contentView.topContentView.matchStatesStackView.isHidden = false
         
         addChildViewController(
             specialSportViewController,
@@ -116,6 +117,7 @@ extension SportViewController
                 sport: .basketball
             )
         )
+        contentView.topContentView.matchStatesStackView.isHidden = false
         
         addChildViewController(
             specialSportViewController,
@@ -135,6 +137,7 @@ extension SportViewController
                 sport: .baseball
             )
         )
+        contentView.topContentView.matchStatesStackView.isHidden = false
         
         addChildViewController(
             specialSportViewController,
@@ -153,6 +156,7 @@ extension SportViewController
                 sport: .icehockey
             )
         )
+        contentView.topContentView.matchStatesStackView.isHidden = false
         
         addChildViewController(
             specialSportViewController,
@@ -172,6 +176,7 @@ extension SportViewController
                 sport: .americanfootball
             )
         )
+        contentView.topContentView.matchStatesStackView.isHidden = false
         
         addChildViewController(
             specialSportViewController,

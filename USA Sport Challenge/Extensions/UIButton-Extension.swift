@@ -36,9 +36,27 @@ extension UIButton
         )
     }
     
+    
     @objc func underline() {
+
+        UIButton.greenIndicator.frame = CGRect(
+            x: 0,
+            y: self.bounds.maxY,
+            width: self.frame.width,
+            height: 5
+        )
+
         if self.isHighlighted {
             self.addSubview(UIButton.greenIndicator)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                UIButton.greenIndicator.removeFromSuperview()
+            }
+        } else {
+            UIButton.greenIndicator.removeFromSuperview()
         }
+    }
+    
+    func toggle () {
+        self.isSelected.toggle()
     }
 }

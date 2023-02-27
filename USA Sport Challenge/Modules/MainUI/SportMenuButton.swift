@@ -70,7 +70,7 @@ class SportMenuButton:
     lazy var chooseSport: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "ChooseSportCircle"), for: .normal)
-        button.frame.size = CGSize(width: 60, height: 60)
+        button.frame.size = CGSize(width: 30, height: 30)
         
         return button
     }()
@@ -105,37 +105,27 @@ class SportMenuButton:
         chooseSport.snp.makeConstraints { make in
             make.centerY.equalToSuperview() .offset(-100)
             make.centerX.equalToSuperview()
+            make.width.height.equalTo(150)
         }
-        
         americanFootBallContainer.snp.makeConstraints { make in
             make.centerX.equalTo(chooseSport.snp.centerX)
             make.centerY.equalTo(chooseSport.snp.centerY)
-            make.height.equalTo(100)
-            make.width.equalTo(100)
         }
         baseBallContainer.snp.makeConstraints { make in
             make.centerX.equalTo(chooseSport.snp.centerX)
             make.centerY.equalTo(chooseSport.snp.centerY)
-            make.height.equalTo(100)
-            make.width.equalTo(100)
         }
         basketBallContainer.snp.makeConstraints { make in
             make.centerX.equalTo(chooseSport.snp.centerX)
             make.centerY.equalTo(chooseSport.snp.centerY)
-            make.height.equalTo(100)
-            make.width.equalTo(100)
         }
         footBallContainer.snp.makeConstraints { make in
             make.centerX.equalTo(chooseSport.snp.centerX)
             make.centerY.equalTo(chooseSport.snp.centerY)
-            make.height.equalTo(100)
-            make.width.equalTo(100)
         }
         HockeyContainer.snp.makeConstraints { make in
             make.centerX.equalTo(chooseSport.snp.centerX)
             make.centerY.equalTo(chooseSport.snp.centerY)
-            make.height.equalTo(100)
-            make.width.equalTo(100)
         }
         
     }
@@ -162,11 +152,7 @@ class SportMenuButton:
             direction: .nine
         )
     }
-    
-    @objc func sayHi() {
-        print("hi")
-    }
-    
+
     func slideAnimation(
         object: UIView,
         direction: AnimationDirection
@@ -181,8 +167,8 @@ class SportMenuButton:
                             object.isHidden = false
                             object.alpha = 1
                             object.layer.frame = CGRect(
-                                x: self.chooseSport.frame.origin.x + 20,
-                                y: self.chooseSport.frame.origin.y - 75,
+                                x: self.chooseSport.frame.origin.x + 10,
+                                y: self.chooseSport.frame.origin.y - 85,
                                 width: 125,
                                 height: 75
                             )})
@@ -193,7 +179,7 @@ class SportMenuButton:
                             object.isHidden = false
                             object.alpha = 1
                             object.layer.frame = CGRect(
-                                x: self.chooseSport.frame.origin.x + 160,
+                                x: self.chooseSport.frame.origin.x + 155,
                                 y: self.chooseSport.frame.origin.y + 20,
                                 width: 75,
                                 height: 125
@@ -229,7 +215,7 @@ class SportMenuButton:
                             object.isHidden = false
                             object.alpha = 1
                             object.layer.frame = CGRect(
-                                x: self.chooseSport.frame.origin.x - 75,
+                                x: self.chooseSport.frame.origin.x - 85,
                                 y: self.chooseSport.frame.origin.y + 20,
                                 width: 75,
                                 height: 125

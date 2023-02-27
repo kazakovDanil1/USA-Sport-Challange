@@ -29,10 +29,10 @@ class SpecialSportViewController:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bind()
         setTableViewControllerDelegates()
-        addSubs()
         viewModel.loadView(viewModel.sport)
+        addSubs()
+        bind()
     }
     
     init(viewModel: SpecialSportViewModel) {
@@ -63,7 +63,6 @@ class SpecialSportViewController:
         }
         
         globalState.bind { state in
-            
             self.reloadTable()
         }
         
@@ -86,6 +85,7 @@ extension SpecialSportViewController
         else {
             return
         }
+        
         delegate.returnBack(self, name: "special")
     }
 }
@@ -120,17 +120,17 @@ extension SpecialSportViewController:
             
             matchVC.matchDetailsViewModel.fetchStatisticFrom(game.gameID)
             
-//MARK: - HOME
+            //MARK: - HOME
             contentView.firstTeamPic.sd_setImage(
                 with:Constants.teamPic(
                     team:  game.home.id,
                     sport: (self?.viewModel.sport.rawValue)!))
             contentView.firstTeamPicLabel.text = game.home.name
-//MARK: - AWAY
+            //MARK: - AWAY
             contentView.secondTeamPic.sd_setImage(
                 with: Constants.teamPic(
-                team:  game.away.id,
-                sport: (self?.viewModel.sport.rawValue)!))
+                    team:  game.away.id,
+                    sport: (self?.viewModel.sport.rawValue)!))
             contentView.secondTeamPicLabel.text = game.away.name
         }
         addChildViewController(matchVC, on: self.view)
@@ -146,39 +146,59 @@ extension SpecialSportViewController:
         else {
             return UITableViewCell()
         }
-        setupCustomizationFor(cell)
         
-        
+        self.setupCustomizationFor(cell)
+      
         
         DispatchQueue.main.async { [weak self] in
             switch globalState.value {
             case "endedMatch":
-                cell.taskLabel.text = self?.viewModel.passedMatches.value[
+                cell.stateLabel.text = self?.viewModel.passedMatches.value[
                     indexPath.section
-                ].league.name
+                ].timeStatus
+                cell.statusLabel.text = self?.viewModel.passedMatches.value[
+                    indexPath.section
+                ].time
+                cell.firstTeam.text = self?.viewModel.passedMatches.value[
+                    indexPath.section
+                ].home.name
+                cell.secondTeam.text = self?.viewModel.passedMatches.value[
+                    indexPath.section
+                ].away.name
+                cell.firstTeamScore.text = self?.viewModel.passedMatches.value[
+                    indexPath.section
+                ].score
             case "liveMatch":
-                cell.taskLabel.text = self?.viewModel.liveMatches.value[
+                cell.stateLabel.text = self?.viewModel.liveMatches.value[
                     indexPath.section
-                ].league.name
+                ].timeStatus
+                cell.statusLabel.text = self?.viewModel.liveMatches.value[
+                    indexPath.section
+                ].time
+                cell.firstTeam.text = self?.viewModel.liveMatches.value[
+                    indexPath.section
+                ].home.name
+                cell.secondTeam.text = self?.viewModel.liveMatches.value[
+                    indexPath.section
+                ].away.name
             case "preMatch":
-                cell.taskLabel.text = self?.viewModel.preMatches.value[
+                cell.stateLabel.text = self?.viewModel.preMatches.value[
                     indexPath.section
-                ].league.name
+                ].timeStatus
+                cell.statusLabel.text = self?.viewModel.preMatches.value[
+                    indexPath.section
+                ].time
+                cell.firstTeam.text = self?.viewModel.preMatches.value[
+                    indexPath.section
+                ].home.name
+                cell.secondTeam.text = self?.viewModel.preMatches.value[
+                    indexPath.section
+                ].away.name
             default:
-                break
+                print("hello")
             }
         }
         return cell
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        viewForHeaderInSection section: Int
-    ) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        
-        return headerView
     }
     
     func tableView(
@@ -190,31 +210,21 @@ extension SpecialSportViewController:
     
     func tableView(
         _ tableView: UITableView,
-        heightForHeaderInSection section: Int
-    ) -> CGFloat {
-        10
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
-        70
+        100
     }
     
     func numberOfSections(
         in tableView: UITableView
     ) -> Int {
         var section = viewModel.liveMatches.value.count
-        
         if globalState.value == "endedMatch" {
             section = viewModel.passedMatches.value.count
         }
-        
         if globalState.value == "liveMatch" {
             section = viewModel.liveMatches.value.count
         }
-        
         if globalState.value == "preMatch" {
             section = viewModel.preMatches.value.count
         }
@@ -227,17 +237,18 @@ extension SpecialSportViewController:
 extension SpecialSportViewController {
     
     private func setupCustomizationFor(_ cell: SpecialSportCell) {
-        cell.backgroundColor = .none
+        cell.backgroundColor = .white
         cell.selectionStyle  = .none
         cell.layer.cornerRadius = 10
         cell.layer.shadowRadius = 9
         cell.layer.shadowOpacity = 0.3
         cell.layer.shadowOffset = CGSize(width: 5, height: 8)
         cell.layer.masksToBounds = true
-        cell.clipsToBounds = false
+        cell.clipsToBounds = true
         
         cell.cellView.layer.cornerRadius = 8
         cell.cellView.layer.masksToBounds = true
+        
     }
     
     func reloadTable() {
@@ -248,9 +259,9 @@ extension SpecialSportViewController {
     
     private func setupTableViewFrames() {
         sportTableView.snp.makeConstraints { make in
-            make.top.equalToSuperview() .offset(50)
-            make.leading.equalToSuperview() .offset(10)
-            make.trailing.equalToSuperview() .offset(-10)
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
     }

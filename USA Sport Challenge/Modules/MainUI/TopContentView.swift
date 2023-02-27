@@ -35,12 +35,26 @@ class TopContentView:
         stackView.addArrangedSubview(endedButton)
         stackView.addArrangedSubview(liveButton)
         stackView.addArrangedSubview(comingButton)
-        
+        stackView.isHidden = true
         return stackView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        notifyButton.setImage(
+            UIImage(
+                systemName: "bell.fill"),
+            for: .normal
+        )
+        notifyButton.tintColor = UIColor().elementColor
+        notifyButton.contentMode = .scaleAspectFit
+        
+        settingsButton.setImage(
+            UIImage(
+                systemName: "gearshape.fill"),
+            for: .normal
+        )
+        settingsButton.tintColor = UIColor().elementColor
         
         backgroundColor = UIColor().topColor
         layoutIfNeeded()
@@ -71,6 +85,15 @@ extension TopContentView
     }
     
     func makeConstraints() {
+        
+//        notifyButton.snp.makeConstraints { make in
+//            make.width.height.equalTo(40)
+//        }
+//
+//        settingsButton.snp.makeConstraints { make in
+//            make.width.height.equalTo(150)
+//        }
+        
         
         buttonStackView.snp.makeConstraints
         { make in
