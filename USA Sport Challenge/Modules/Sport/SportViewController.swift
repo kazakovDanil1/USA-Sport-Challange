@@ -4,20 +4,20 @@
 import UIKit
 import SnapKit
 
-protocol ReturnBackFromViewControllerDelegate: AnyObject
+protocol ReturnBackFromViewControllerDelegate:
+    AnyObject
 {
-    func returnBack(_ from: UIViewController)
+    func returnBack(_ from: UIViewController, name: String)
 }
-
 
 class SportViewController:
     UIViewController
 {
-
+    
     private lazy var contentView = self.view as? SportView
     private let settingsViewController = SettingsViewController()
     private let chosenSportViewController = ChosenSportViewController()
-    private let specialSportViewController = SpecialSportViewController()
+    private let specialSportViewController: SpecialSportViewController? = nil
     
     private let viewModel: SportViewModelType?
     
@@ -44,12 +44,31 @@ class SportViewController:
             return
         }
         
-        sportMenu.americanFootBallContainer.addTarget(
+        sportMenu.footBallContainer.addTarget(
             self,
-            action: #selector(enterSpecialSport),
+            action: #selector(enterSoccerSport),
             for: .touchUpInside
         )
-
+        sportMenu.americanFootBallContainer.addTarget(
+            self,
+            action: #selector(enterAmericanfootballSport),
+            for: .touchUpInside
+        )
+        sportMenu.basketBallContainer.addTarget(
+            self,
+            action: #selector(enterBaseballSport),
+            for: .touchUpInside
+        )
+        sportMenu.HockeyContainer.addTarget(
+            self,
+            action: #selector(enterIceHockeySport),
+            for: .touchUpInside
+        )
+        sportMenu.baseBallContainer.addTarget(
+            self,
+            action: #selector(enterSoccerSport),
+            for: .touchUpInside
+        )
     }
     
     required init(coder: NSCoder) {
@@ -60,10 +79,10 @@ class SportViewController:
 extension SportViewController:
     ReturnBackFromViewControllerDelegate
 {
-    func returnBack(_ from: UIViewController) {
+    func returnBack(_ from: UIViewController, name: String) {
         removeChildViewController(from)
         
-        if from == specialSportViewController {
+        if name == "special" {
             dropAnimation()
         }
     }
@@ -82,12 +101,95 @@ extension SportViewController
         }
     }
     
-    @objc func enterSpecialSport() {
+    @objc func enterSoccerSport() {
         guard let contentView = contentView
         else {
             return
         }
         dropAnimation()
+        
+        let specialSportViewController = SpecialSportViewController(
+            viewModel: SpecialSportViewModel(
+                sport: .soccer
+            )
+        )
+        let matchVC = MatchDetailsViewController()
+        
+        addChildViewController(
+            specialSportViewController,
+            on: contentView.contentView
+        )
+        specialSportViewController.delegate = self
+    }
+    
+    @objc func enterBasketballSport() {
+        guard let contentView = contentView
+        else {
+            return
+        }
+        dropAnimation()
+        let specialSportViewController = SpecialSportViewController(
+            viewModel: SpecialSportViewModel(
+                sport: .basketball
+            )
+        )
+        
+        addChildViewController(
+            specialSportViewController,
+            on: contentView.contentView
+        )
+        specialSportViewController.delegate = self
+    }
+    
+    @objc func enterBaseballSport() {
+        guard let contentView = contentView
+        else {
+            return
+        }
+        dropAnimation()
+        let specialSportViewController = SpecialSportViewController(
+            viewModel: SpecialSportViewModel(
+                sport: .baseball
+            )
+        )
+        
+        addChildViewController(
+            specialSportViewController,
+            on: contentView.contentView
+        )
+        specialSportViewController.delegate = self
+    }
+    @objc func enterIceHockeySport() {
+        guard let contentView = contentView
+        else {
+            return
+        }
+        dropAnimation()
+        let specialSportViewController = SpecialSportViewController(
+            viewModel: SpecialSportViewModel(
+                sport: .icehockey
+            )
+        )
+        
+        addChildViewController(
+            specialSportViewController,
+            on: contentView.contentView
+        )
+        specialSportViewController.delegate = self
+    }
+    
+    @objc func enterAmericanfootballSport() {
+        guard let contentView = contentView
+        else {
+            return
+        }
+        dropAnimation()
+        let specialSportViewController = SpecialSportViewController(
+            viewModel: SpecialSportViewModel(
+                sport: .americanfootball
+            )
+        )
+        
         addChildViewController(
             specialSportViewController,
             on: contentView.contentView

@@ -21,13 +21,11 @@ class ChosenSportViewController:
         
         addTarget()
     }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         contentView?.backButton.makeShadows(radius: 5, shadowOpacity: 0.5)
     }
-    
 }
 
 extension ChosenSportViewController
@@ -44,6 +42,6 @@ extension ChosenSportViewController
         else {
             return
         }
-        delegate.returnBack(self)
+        delegate.returnBack(self, name: "chosen")
     }
 }

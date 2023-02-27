@@ -13,4 +13,8 @@ extension UIColor {
         return #colorLiteral(red: 0.9991982579, green: 0.6899703145, blue: 0.08480066806, alpha: 1)
     }
     
+    var AppGreenColor: UIColor {
+        return #colorLiteral(red: 0.3773275018, green: 0.6996914744, blue: 0.3004684448, alpha: 1)
+    }
+    
 }

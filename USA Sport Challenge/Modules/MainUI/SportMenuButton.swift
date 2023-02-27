@@ -14,6 +14,14 @@ enum AnimationDirection: String {
     case drop = "drop"
 }
 
+enum SelectedButtonTag: Int {
+     case First
+     case Second
+     case Third
+     case fourth
+     case fifth
+  }
+
 class SportMenuButton:
     UIView
 {
@@ -36,6 +44,7 @@ class SportMenuButton:
     }()
     lazy var footBallContainer: UIButton = {
         let button = UIButton()
+        let something =  ""
         button.setImage(UIImage(named: "3"), for: .normal)
         button.isHidden = true
         //        FootBall

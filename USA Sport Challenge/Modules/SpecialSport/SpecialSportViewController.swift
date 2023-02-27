@@ -2,24 +2,61 @@
 //USA Sport Challenge in 2023
 
 import UIKit
+import SDWebImage
+
+
+protocol ReturnBackDelegate:
+    AnyObject
+{
+    func back(_ from: UIViewController)
+}
+
+extension SpecialSportViewController:
+    ReturnBackDelegate
+{
+    func back(_ from: UIViewController) {
+        removeChildViewController(from)
+    }
+    
+}
 
 class SpecialSportViewController:
     UIViewController
 {
-    private let viewModel = SpecialSportViewModel()
-    private let sportTableView = SpecialSportTableView()
-    weak var delegate: ReturnBackFromViewControllerDelegate?
     private let backButton = CircleButton(action: #selector(returnBack))
+    weak var delegate: ReturnBackFromViewControllerDelegate?
+    private let sportTableView = SpecialSportTableView()
+    private let viewModel: SpecialSportViewModel
+    let indicator = SDWebImageActivityIndicator.grayLarge
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addSubs()
         setTableViewControllerDelegates()
+        viewModel.fetchMatches(viewModel.sport)
+        bind()
+    }
+    
+    init(viewModel: SpecialSportViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    func bind() {
+        viewModel.liveMatches.bind { match in
+            self.reloadTable()
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        indicator.startAnimatingIndicator()
         
         setupTableViewFrames()
         setupConstraints()
@@ -30,28 +67,58 @@ class SpecialSportViewController:
 
 extension SpecialSportViewController
 {
-    
     @objc func returnBack() {
         guard let delegate = delegate
         else {
             return
         }
-        
-        delegate.returnBack(self)
+        delegate.returnBack(self, name: "special")
     }
 }
-
 
 extension SpecialSportViewController:
     UITableViewDelegate,
     UITableViewDataSource
 {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //present sport screen
+        let matchVC = MatchDetailsViewController()
         
-        print("you choose sprt ")
+        guard let contentView = matchVC.contentView
+        else {
+            return
+        }
+        
+        matchVC.delegate = self
+        
+        let game = viewModel.liveMatches.value[indexPath.section]
+        
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.indicator.stopAnimatingIndicator()
+            
+            contentView.dateLabel.text = game.timer
+            contentView.score.text = game.score
+
+//MARK: - HOME
+            contentView.firstTeamPic.sd_setImage(
+                with:Constants.teamPic(
+                    team:  game.home.id,
+                    sport: (self?.viewModel.sport.rawValue)!))
+            contentView.firstTeamPicLabel.text = game.home.name
+//MARK: - AWAY
+            contentView.secondTeamPic.sd_setImage(
+                with: Constants.teamPic(
+                team:  game.away.id,
+                sport: (self?.viewModel.sport.rawValue)!))
+            contentView.secondTeamPicLabel.text = game.away.name
+        }
+        addChildViewController(matchVC, on: self.view)
     }
     
     func tableView(
@@ -65,11 +132,11 @@ extension SpecialSportViewController:
             return UITableViewCell()
         }
         
-        
         setupCustomizationFor(cell)
         
-        
-        cell.taskLabel.text = "hello"
+        cell.taskLabel.text = viewModel.liveMatches.value[
+            indexPath.section
+        ].league.name
         
         return cell
     }
@@ -109,7 +176,7 @@ extension SpecialSportViewController:
     func numberOfSections(
         in tableView: UITableView
     ) -> Int {
-        return 5
+        viewModel.liveMatches.value.count
     }
 }
 

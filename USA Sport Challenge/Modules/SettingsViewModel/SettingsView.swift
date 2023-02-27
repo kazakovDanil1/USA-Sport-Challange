@@ -156,7 +156,7 @@ extension SettingsView
     
     func makeConstraints() {
         menuView.snp.makeConstraints { make in
-            make.top.equalToSuperview() .offset(40)
+            make.top.equalToSuperview() .offset(100)
             make.leading.equalToSuperview() .offset(10)
             make.trailing.equalToSuperview() .inset(10)
             make.height.equalTo(267)

@@ -54,6 +54,6 @@ extension SettingsViewController
         else {
             return
         }
-        delegate.returnBack(self)
+        delegate.returnBack(self, name: "settings")
     }
 }

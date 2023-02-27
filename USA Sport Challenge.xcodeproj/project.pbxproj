@@ -14,6 +14,12 @@
 		9771654A29AB660200D261B3 /* SpecialSportTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654929AB660200D261B3 /* SpecialSportTableView.swift */; };
 		9771654C29AB693A00D261B3 /* SpecialSportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654B29AB693A00D261B3 /* SpecialSportViewModel.swift */; };
 		9771654E29AB72E900D261B3 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771654D29AB72E900D261B3 /* CircleButton.swift */; };
+		9771655129AB837D00D261B3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9771655029AB837D00D261B3 /* Alamofire */; };
+		9771655329AB85A500D261B3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771655229AB85A500D261B3 /* NetworkManager.swift */; };
+		9771655829AB909A00D261B3 /* Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771655729AB909A00D261B3 /* Live.swift */; };
+		9771655C29ABBDF400D261B3 /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771655B29ABBDF400D261B3 /* MatchDetailsViewController.swift */; };
+		9771655F29ABBE1300D261B3 /* MatchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771655E29ABBE1300D261B3 /* MatchDetailsView.swift */; };
+		9771656229ABCB7A00D261B3 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9771656129ABCB7A00D261B3 /* SDWebImage */; };
 		979BDEBE29A764DF00C24421 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDEBD29A764DF00C24421 /* AppDelegate.swift */; };
 		979BDEC029A764DF00C24421 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDEBF29A764DF00C24421 /* SceneDelegate.swift */; };
 		979BDEC229A764DF00C24421 /* SportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 979BDEC129A764DF00C24421 /* SportView.swift */; };
@@ -55,6 +61,10 @@
 		9771654929AB660200D261B3 /* SpecialSportTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialSportTableView.swift; sourceTree = "<group>"; };
 		9771654B29AB693A00D261B3 /* SpecialSportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialSportViewModel.swift; sourceTree = "<group>"; };
 		9771654D29AB72E900D261B3 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		9771655229AB85A500D261B3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9771655729AB909A00D261B3 /* Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Live.swift; sourceTree = "<group>"; };
+		9771655B29ABBDF400D261B3 /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
+		9771655E29ABBE1300D261B3 /* MatchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsView.swift; sourceTree = "<group>"; };
 		979BDEBA29A764DF00C24421 /* USA Sport Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "USA Sport Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		979BDEBD29A764DF00C24421 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		979BDEBF29A764DF00C24421 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +102,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9771655129AB837D00D261B3 /* Alamofire in Frameworks */,
 				979BDF1129A7839700C24421 /* SnapKit in Frameworks */,
+				9771656229ABCB7A00D261B3 /* SDWebImage in Frameworks */,
 				9879A92981D5404EE6D78CBF /* Pods_USA_Sport_Challenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				979BDF4129A934A200C24421 /* Dynamic.swift */,
+				9771655229AB85A500D261B3 /* NetworkManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -120,10 +133,10 @@
 		9771653129AA419300D261B3 /* MainUI */ = {
 			isa = PBXGroup;
 			children = (
+				9771652D29AA2AA000D261B3 /* SportMenuButton.swift */,
 				979BDF3F29A9229800C24421 /* TopContentView.swift */,
 				9771653E29AB4DB300D261B3 /* TopMenuButton.swift */,
 				979BDF1229A7851800C24421 /* MainView.swift */,
-				9771652D29AA2AA000D261B3 /* SportMenuButton.swift */,
 			);
 			path = MainUI;
 			sourceTree = "<group>";
@@ -137,6 +150,23 @@
 				9771654729AB655B00D261B3 /* SpecialSportCellswift.swift */,
 			);
 			path = SpecialSport;
+			sourceTree = "<group>";
+		};
+		9771655629AB908800D261B3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9771655729AB909A00D261B3 /* Live.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9771655D29ABBDF700D261B3 /* MatchDetails */ = {
+			isa = PBXGroup;
+			children = (
+				9771655B29ABBDF400D261B3 /* MatchDetailsViewController.swift */,
+				9771655E29ABBE1300D261B3 /* MatchDetailsView.swift */,
+			);
+			path = MatchDetails;
 			sourceTree = "<group>";
 		};
 		979BDEB129A764DF00C24421 = {
@@ -162,6 +192,7 @@
 			children = (
 				979BDED129A765EE00C24421 /* App */,
 				979BDF2529A8CD8B00C24421 /* Extensions */,
+				9771655629AB908800D261B3 /* Models */,
 				9771652C29AA29F400D261B3 /* Helpers */,
 				979BDF0E29A77D4400C24421 /* Protocols */,
 				979BDED329A7665600C24421 /* Modules */,
@@ -199,6 +230,7 @@
 				979BDF2829A8CFA600C24421 /* Sport */,
 				979BDF3829A9070400C24421 /* ChosenSport */,
 				9771654229AB650600D261B3 /* SpecialSport */,
+				9771655D29ABBDF700D261B3 /* MatchDetails */,
 				979BDF2929A8CFB100C24421 /* SettingsViewModel */,
 			);
 			path = Modules;
@@ -293,6 +325,8 @@
 			name = "USA Sport Challenge";
 			packageProductDependencies = (
 				979BDF1029A7839700C24421 /* SnapKit */,
+				9771655029AB837D00D261B3 /* Alamofire */,
+				9771656129ABCB7A00D261B3 /* SDWebImage */,
 			);
 			productName = "USA Sport Challenge";
 			productReference = 979BDEBA29A764DF00C24421 /* USA Sport Challenge.app */;
@@ -324,6 +358,8 @@
 			mainGroup = 979BDEB129A764DF00C24421;
 			packageReferences = (
 				979BDF0F29A7839700C24421 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				9771654F29AB837D00D261B3 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9771656029ABCB7A00D261B3 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 979BDEBB29A764DF00C24421 /* Products */;
 			projectDirPath = "";
@@ -412,8 +448,12 @@
 				979BDEC029A764DF00C24421 /* SceneDelegate.swift in Sources */,
 				9771654C29AB693A00D261B3 /* SpecialSportViewModel.swift in Sources */,
 				979BDF2429A8BD1200C24421 /* UIButton-Extension.swift in Sources */,
+				9771655C29ABBDF400D261B3 /* MatchDetailsViewController.swift in Sources */,
+				9771655829AB909A00D261B3 /* Live.swift in Sources */,
 				979BDF2729A8CF9500C24421 /* SettingsViewModel.swift in Sources */,
 				979BDED529A76E2F00C24421 /* SportViewController.swift in Sources */,
+				9771655329AB85A500D261B3 /* NetworkManager.swift in Sources */,
+				9771655F29ABBE1300D261B3 /* MatchDetailsView.swift in Sources */,
 				979BDF3C29A9072200C24421 /* ChosenSportViewController.swift in Sources */,
 				979BDF3529A8F37000C24421 /* SwitchButton.swift in Sources */,
 				979BDF4229A934A200C24421 /* Dynamic.swift in Sources */,
@@ -644,6 +684,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9771654F29AB837D00D261B3 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		9771656029ABCB7A00D261B3 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		979BDF0F29A7839700C24421 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -655,6 +711,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9771655029AB837D00D261B3 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9771654F29AB837D00D261B3 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		9771656129ABCB7A00D261B3 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9771656029ABCB7A00D261B3 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		979BDF1029A7839700C24421 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 979BDF0F29A7839700C24421 /* XCRemoteSwiftPackageReference "SnapKit" */;

@@ -9,4 +9,6 @@ class SportViewModel:
     func sayHello() {
         print("hello")
     }
+    
+    
 }

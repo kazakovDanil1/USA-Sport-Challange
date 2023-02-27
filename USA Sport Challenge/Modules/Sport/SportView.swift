@@ -23,9 +23,6 @@ class SportView:
         image: "BasketBall"
     )
     
-    
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -34,13 +31,10 @@ class SportView:
         updateConstraintsIfNeeded()
     }
     
-
-    
     override func layoutIfNeeded() {
         super.layoutIfNeeded()
         
         sportMenuButton.frame = self.bounds
-        
         addSubviews()
     }
     

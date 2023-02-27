@@ -9,9 +9,8 @@ class SpecialSportTableView:
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: .zero, style: .grouped)
  
-//        let view = UIImageView(image: UIImage(named: "GrayBackground"))
-//
-//        backgroundView = view
+        let view = UIImageView(image: UIImage(named: "GrayBackground"))
+        backgroundView = view
         
         backgroundColor = .white
         separatorStyle = .none
