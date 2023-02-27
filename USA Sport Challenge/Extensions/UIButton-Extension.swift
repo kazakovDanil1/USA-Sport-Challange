@@ -10,8 +10,8 @@ extension UIButton
         let view = UIView(
             frame: CGRect(
                 x: 0,
-                y: 55,
-                width: UIScreen.main.bounds.width / 2,
+                y: 50,
+                width: UIScreen.main.bounds.width / 3,
                 height: 5))
         view.backgroundColor = .green
         return view
@@ -40,7 +40,5 @@ extension UIButton
         if self.isHighlighted {
             self.addSubview(UIButton.greenIndicator)
         }
-        
-        print("underline")
     }
 }

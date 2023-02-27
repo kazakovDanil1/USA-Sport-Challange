@@ -25,9 +25,7 @@ class SceneDelegate:
         }
         window = UIWindow(windowScene: windowScene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = SportViewController(
-            viewModel: SportViewModel()
-        )
+        window?.rootViewController = SportViewController()
     }
 }
 

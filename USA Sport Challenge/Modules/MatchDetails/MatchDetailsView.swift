@@ -34,18 +34,26 @@ class MatchDetailsView:
         return label
     }()
     
+    let statisticPicture: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "SoccerStatisticPicture")
+        
+        return image
+    }()
+    
     let statisticLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor().AppGreenColor
         label.font = .systemFont(ofSize: 25, weight: .bold)
         
-        label.attributedText = NSAttributedString(string: "STATISTIC", attributes: [
+        label.attributedText = NSAttributedString(
+            string: "STATISTIC",
+            attributes: [
             .underlineColor: UIColor.black.cgColor,
             .underlineStyle: NSUnderlineStyle.single.rawValue
         ])
 
-        
         return label
     }()
     
@@ -55,6 +63,30 @@ class MatchDetailsView:
         stackView.distribution = .fill
         stackView.spacing = 10
         
+        return stackView
+    }()
+    
+    let lastMatchesLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = UIColor().AppGreenColor
+        label.font = .systemFont(ofSize: 25, weight: .bold)
+        
+        label.attributedText = NSAttributedString(
+            string: "LAST MATCHES",
+            attributes: [
+            .underlineColor: UIColor.black.cgColor,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ])
+
+        return label
+    }()
+    
+    var lastMatchesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.spacing = 10
         
         return stackView
     }()
@@ -118,7 +150,7 @@ extension MatchDetailsView
         [dateLabel, score,
          firstTeamPic, firstTeamPicLabel,
          secondTeamPic, secondTeamPicLabel,
-         statisticStackView, statisticLabel
+         statisticStackView, statisticLabel, statisticPicture
         ].forEach {contentView.addSubview($0)}
     }
     
@@ -165,5 +197,13 @@ extension MatchDetailsView
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
+        
+        statisticPicture.snp.makeConstraints { make in
+            make.top.equalTo(statisticStackView.snp.bottom)
+            make.leading.equalTo(statisticStackView.snp.leading)
+            make.trailing.equalTo(statisticStackView.snp.trailing)
+            make.height.equalTo(200)
+        }
+        
     }
 }

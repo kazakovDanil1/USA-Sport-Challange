@@ -13,6 +13,8 @@ enum Constants {
         static let liveMatch = "&task=livedata"
         static let MatchDetails = "&task=eventdata&game_id="
         static let preData = "&task=predata"
+        static let endData = "&task=enddata"
+
     }
     
     enum Date {
@@ -56,14 +58,32 @@ enum Constants {
 
 
 protocol NetworkService {
-    func downloadMatches(
+    func downloadEndedMatches(
+        link: String,
+        completion:
+        @escaping(Result<EndedMatch, Error>) -> Void
+    )
+    func downloadLiveMatches(
          link: String,
          completion:
          @escaping(Result<Live, Error>) -> Void
     )
+    func downloadPreMatches(
+         link: String,
+         completion:
+         @escaping(Result<PreMatch, Error>) -> Void
+    )
+    func downloadMatchDetails(
+         link: String,
+         completion:
+         @escaping(Result<MatchDetailsModel, Error>) -> Void
+    )
+    
 }
 
 class NetworkManager: NetworkService {
+    
+    
     
     static let shared = NetworkManager()
     
@@ -87,9 +107,25 @@ class NetworkManager: NetworkService {
             }
         }
     }
-    
-    
-    func downloadMatches(
+    func downloadEndedMatches(
+         link: String,
+         completion:
+         @escaping(Result<EndedMatch, Error>) -> Void
+    ) {
+        print(link)
+
+        AF.download(link).responseDecodable(
+            of: EndedMatch.self
+        ) { response in
+            do {
+                let endedMatch = try response.result.get()
+                completion(.success(endedMatch))
+            } catch (let error){
+                completion(.failure(error))
+            }
+        }
+    }
+    func downloadLiveMatches(
          link: String,
          completion:
          @escaping(Result<Live, Error>) -> Void
@@ -102,6 +138,25 @@ class NetworkManager: NetworkService {
             do {
                 let liveMatch = try response.result.get()
                 completion(.success(liveMatch))
+            } catch (let error){
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func downloadPreMatches(
+         link: String,
+         completion:
+         @escaping(Result<PreMatch, Error>) -> Void
+    ) {
+        print(link)
+
+        AF.download(link).responseDecodable(
+            of: PreMatch.self
+        ) { response in
+            do {
+                let preMatch = try response.result.get()
+                completion(.success(preMatch))
             } catch (let error){
                 completion(.failure(error))
             }

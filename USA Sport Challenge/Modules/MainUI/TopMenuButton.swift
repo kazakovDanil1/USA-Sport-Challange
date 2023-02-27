@@ -6,7 +6,6 @@ import UIKit
 class TopMenuButton:
     UIButton
 {
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addUnderLine()

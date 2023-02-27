@@ -7,6 +7,8 @@ import UIKit
 
 class MatchDetailsViewModel
 {
+    var sport: Dynamic<Sport?> = Dynamic<Sport?>(nil)
+    
     var match: Dynamic<MatchDetailsModel?> = Dynamic<MatchDetailsModel?>(nil)
     
     func fetchStatisticFrom(_ matchID: String) {

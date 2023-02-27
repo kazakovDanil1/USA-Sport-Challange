@@ -4,7 +4,6 @@
 import UIKit
 import SDWebImage
 
-
 protocol ReturnBackDelegate:
     AnyObject
 {
@@ -17,25 +16,23 @@ extension SpecialSportViewController:
     func back(_ from: UIViewController) {
         removeChildViewController(from)
     }
-    
 }
 
 class SpecialSportViewController:
     UIViewController
 {
-    private let backButton = CircleButton(action: #selector(returnBack))
-    weak var delegate: ReturnBackFromViewControllerDelegate?
     private let sportTableView = SpecialSportTableView()
     private let viewModel: SpecialSportViewModel
-    let indicator = SDWebImageActivityIndicator.grayLarge
+    private let backButton = CircleButton(action: #selector(returnBack))
+    weak var delegate: ReturnBackFromViewControllerDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addSubs()
-        setTableViewControllerDelegates()
-        viewModel.fetchMatches(viewModel.sport)
         bind()
+        setTableViewControllerDelegates()
+        addSubs()
+        viewModel.loadView(viewModel.sport)
     }
     
     init(viewModel: SpecialSportViewModel) {
@@ -49,14 +46,31 @@ class SpecialSportViewController:
     }
     
     func bind() {
-        viewModel.liveMatches.bind { match in
+        viewModel.preMatches.bind { pre in
+            if !(pre.isEmpty) {
+                self.reloadTable()
+            }
+        }
+        viewModel.liveMatches.bind { live in
+            if !(live.isEmpty) {
+                self.reloadTable()
+            }
+        }
+        viewModel.passedMatches.bind { ended in
+            if !(ended.isEmpty) {
+                self.reloadTable()
+            }
+        }
+        
+        globalState.bind { state in
+            
             self.reloadTable()
         }
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        indicator.startAnimatingIndicator()
         
         setupTableViewFrames()
         setupConstraints()
@@ -88,6 +102,7 @@ extension SpecialSportViewController:
         tableView.deselectRow(at: indexPath, animated: true)
         
         let matchVC = MatchDetailsViewController()
+        matchVC.matchDetailsViewModel.sport.value = viewModel.sport
         
         guard let contentView = matchVC.contentView
         else {
@@ -131,13 +146,28 @@ extension SpecialSportViewController:
         else {
             return UITableViewCell()
         }
-        
         setupCustomizationFor(cell)
         
-        cell.taskLabel.text = viewModel.liveMatches.value[
-            indexPath.section
-        ].league.name
         
+        
+        DispatchQueue.main.async { [weak self] in
+            switch globalState.value {
+            case "endedMatch":
+                cell.taskLabel.text = self?.viewModel.passedMatches.value[
+                    indexPath.section
+                ].league.name
+            case "liveMatch":
+                cell.taskLabel.text = self?.viewModel.liveMatches.value[
+                    indexPath.section
+                ].league.name
+            case "preMatch":
+                cell.taskLabel.text = self?.viewModel.preMatches.value[
+                    indexPath.section
+                ].league.name
+            default:
+                break
+            }
+        }
         return cell
     }
     
@@ -150,7 +180,6 @@ extension SpecialSportViewController:
         
         return headerView
     }
-    
     
     func tableView(
         _ tableView: UITableView,
@@ -176,7 +205,22 @@ extension SpecialSportViewController:
     func numberOfSections(
         in tableView: UITableView
     ) -> Int {
-        viewModel.liveMatches.value.count
+        var section = viewModel.liveMatches.value.count
+        
+        if globalState.value == "endedMatch" {
+            section = viewModel.passedMatches.value.count
+        }
+        
+        if globalState.value == "liveMatch" {
+            section = viewModel.liveMatches.value.count
+        }
+        
+        if globalState.value == "preMatch" {
+            section = viewModel.preMatches.value.count
+        }
+        
+        return section
+        
     }
 }
 

@@ -35,7 +35,6 @@ class TopContentView:
         stackView.addArrangedSubview(endedButton)
         stackView.addArrangedSubview(liveButton)
         stackView.addArrangedSubview(comingButton)
-        stackView.isHidden = true
         
         return stackView
     }()
@@ -47,23 +46,7 @@ class TopContentView:
         layoutIfNeeded()
         updateConstraintsIfNeeded()
     }
-    
-//    override func hitTest(
-//        _ point: CGPoint,
-//        with event: UIEvent?
-//    ) -> UIView? {
-//       let biggerButtonFrame = matchStatesStackView.frame.insetBy(
-//        dx: -30,
-//        dy: -30
-//       ) // 1
-//
-//       if biggerButtonFrame.contains(point) { // 2
-//          return matchStatesStackView // 3
-//       }
-//
-//       return super.hitTest(point, with: event) // 4
-//    }
-    
+        
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -91,16 +74,17 @@ extension TopContentView
         
         buttonStackView.snp.makeConstraints
         { make in
+            make.top.equalToSuperview() .offset(20)
             make.trailing.leading.equalToSuperview()
-            make.bottom.equalToSuperview() .inset(10)
             make.height.equalTo(50)
         }
         
         matchStatesStackView.snp.makeConstraints
         { make in
-            make.trailing.leading.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.top.equalTo(buttonStackView.snp.bottom) .offset(10)
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(50)
         }
+        }
     }
-}
+

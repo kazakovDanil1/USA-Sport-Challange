@@ -25,7 +25,7 @@ class SportView:
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-                
+        
         commonInit()
         layoutIfNeeded()
         updateConstraintsIfNeeded()
@@ -43,6 +43,8 @@ class SportView:
         makeMainConstraints()
         makeConstraints()
     }
+    
+    
     
     required init(coder: NSCoder) {
         fatalError()

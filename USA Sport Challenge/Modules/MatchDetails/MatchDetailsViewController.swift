@@ -27,19 +27,36 @@ class MatchDetailsViewController:
     }
     
     func bind() {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async
+        { [weak self] in
+            
             guard let self = self,
                   let contentView = self.contentView
             else {
                 return
             }
-            self.matchDetailsViewModel.match.bind
-            { [weak self] match in
-                self?.matchDetailsViewModel.fill(contentView.statisticStackView)
-                
+            
+            self.matchDetailsViewModel.match.bind { [weak self] match in
+                self?.matchDetailsViewModel.fill(
+                    contentView.statisticStackView
+                )
             }
             
+            self.matchDetailsViewModel.sport.bind { sport in
+                if sport == .basketball {
+                    self.contentView?.statisticPicture.image = UIImage(
+                        named: "BasketStatisticPicture"
+                    )
+                } else if sport == .soccer {
+                    self.contentView?.statisticPicture.image = UIImage(
+                        named: "SoccerStatisticPicture"
+                    )
+                }
         }
+        
+            
+        }
+        
 
     }
     

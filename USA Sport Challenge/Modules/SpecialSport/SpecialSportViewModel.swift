@@ -2,8 +2,9 @@
 //USA Sport Challenge in 2023
 
 
-
-enum Sport: String {
+enum Sport:
+    String
+{
     case baseball = "baseball"
     case americanfootball = "americanfootball"
     case soccer = "soccer"
@@ -11,17 +12,14 @@ enum Sport: String {
     case basketball = "basketball"
 }
 
-protocol SpecialSportViewModelType
-{
-    func fetchMatches(_ forSport: Sport)
-}
 
-class SpecialSportViewModel:
-    SpecialSportViewModelType
+class SpecialSportViewModel
 {
     var sport: Sport
     
+    var passedMatches: Dynamic<[EndedGames]> = Dynamic([EndedGames]())
     var liveMatches: Dynamic<[GamesLive]> = Dynamic([GamesLive]())
+    var preMatches: Dynamic<[PreMatchGames]> = Dynamic([PreMatchGames]())
     
     init(sport: Sport) {
         self.sport = sport
@@ -43,45 +41,237 @@ class SpecialSportViewModel:
             }
     }
     
-    func fetchMatches(_ forSport: Sport) {
-        let link: String
+    func loadView(_ forSport: Sport) {
+        var endedLink: String
+        var liveLink: String
+        var preLink: String
+        
         switch forSport {
         case .baseball:
-            link = Constants.createURL(
+//ENDED MATCH
+            endedLink = Constants.createURL(
+                link: Constants.Links.endData,
+                sport: Constants.Sports.baseball
+            )
+            endedLink += Constants.Date.today
+            NetworkManager.shared.downloadEndedMatches(
+                link: endedLink) { result in
+                    switch result {
+                    case .success(let endedMatch):
+                        self.passedMatches.value = endedMatch.gamesEnd
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//LIVE MATCH
+            liveLink = Constants.createURL(
                 link: Constants.Links.liveMatch,
                 sport: Constants.Sports.baseball
             )
+            NetworkManager.shared.downloadLiveMatches(
+                link: liveLink) { result in
+                    switch result {
+                    case .success(let liveMatch):
+                        self.liveMatches.value = liveMatch.gamesLive
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//PREMATCH
+            preLink = Constants.createURL(
+                link: Constants.Links.preData,
+                sport: Constants.Sports.baseball
+            )
+            preLink += Constants.Date.today
+            NetworkManager.shared.downloadPreMatches(
+                link: preLink) { result in
+                    switch result {
+                    case .success(let preMatch):
+                        self.preMatches.value = preMatch.gamesPre
+                    case .failure(let error):
+                        print("Error: - \(error.localizedDescription)")
+                }
+            }
         case .americanfootball:
-            link = Constants.createURL(
+            endedLink = Constants.createURL(
+                link: Constants.Links.endData,
+                sport: Constants.Sports.americanfootball
+            )
+            endedLink += Constants.Date.today
+//ENDED
+            NetworkManager.shared.downloadEndedMatches(
+                link: endedLink) { result in
+                    switch result {
+                    case .success(let endedMatch):
+                        self.passedMatches.value = endedMatch.gamesEnd
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+            liveLink = Constants.createURL(
                 link: Constants.Links.liveMatch,
                 sport: Constants.Sports.americanfootball
             )
+//LIVE MATCH
+            NetworkManager.shared.downloadLiveMatches(
+                link: liveLink) { result in
+                    switch result {
+                    case .success(let liveMatch):
+                        self.liveMatches.value = liveMatch.gamesLive
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//PREMATCH
+            preLink = Constants.createURL(
+                link: Constants.Links.preData,
+                sport: Constants.Sports.americanfootball
+            )
+            preLink += Constants.Date.today
+            NetworkManager.shared.downloadPreMatches(
+                link: preLink) { result in
+                    switch result {
+                    case .success(let preMatch):
+                        self.preMatches.value = preMatch.gamesPre
+                    case .failure(let error):
+                        print("Error: - \(error.localizedDescription)")
+                }
+            }
         case .soccer:
-            link = Constants.createURL(
+//ENDED
+            endedLink = Constants.createURL(
+                link: Constants.Links.endData,
+                sport: Constants.Sports.soccer
+            )
+            endedLink += Constants.Date.today
+            NetworkManager.shared.downloadEndedMatches(
+                link: endedLink) { result in
+                    switch result {
+                    case .success(let endedMatch):
+                        self.passedMatches.value = endedMatch.gamesEnd
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//LIVE MATCH
+            liveLink = Constants.createURL(
                 link: Constants.Links.liveMatch,
                 sport: Constants.Sports.soccer
             )
+            NetworkManager.shared.downloadLiveMatches(
+                link: liveLink) { result in
+                    switch result {
+                    case .success(let liveMatch):
+                        self.liveMatches.value = liveMatch.gamesLive
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//PREMATCH
+            preLink = Constants.createURL(
+                link: Constants.Links.preData,
+                sport: Constants.Sports.soccer
+            )
+            preLink += Constants.Date.today
+            NetworkManager.shared.downloadPreMatches(
+                link: preLink) { result in
+                    switch result {
+                    case .success(let preMatch):
+                        self.preMatches.value = preMatch.gamesPre
+                    case .failure(let error):
+                        print("Error: - \(error.localizedDescription)")
+                }
+            }
         case .icehockey:
-            link = Constants.createURL(
+//ENDED MATCH
+            endedLink = Constants.createURL(
+                link: Constants.Links.endData,
+                sport: Constants.Sports.hockey
+            )
+            endedLink += Constants.Date.today
+            NetworkManager.shared.downloadEndedMatches(
+                link: endedLink) { result in
+                    switch result {
+                    case .success(let endedMatch):
+                        self.passedMatches.value = endedMatch.gamesEnd
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//LIVE MATCH
+            liveLink = Constants.createURL(
                 link: Constants.Links.liveMatch,
                 sport: Constants.Sports.hockey
             )
+            NetworkManager.shared.downloadLiveMatches(
+                link: liveLink) { result in
+                    switch result {
+                    case .success(let liveMatch):
+                        self.liveMatches.value = liveMatch.gamesLive
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//PREMATCH
+            preLink = Constants.createURL(
+                link: Constants.Links.preData,
+                sport: Constants.Sports.hockey
+            )
+            preLink += Constants.Date.today
+            NetworkManager.shared.downloadPreMatches(
+                link: preLink) { result in
+                    switch result {
+                    case .success(let preMatch):
+                        self.preMatches.value = preMatch.gamesPre
+                    case .failure(let error):
+                        print("Error: - \(error.localizedDescription)")
+                }
+            }
         case .basketball:
-            link = Constants.createURL(
+//ENDED MATCH
+            endedLink = Constants.createURL(
+                link: Constants.Links.endData,
+                sport: Constants.Sports.basketball
+            )
+            endedLink += Constants.Date.today
+            NetworkManager.shared.downloadEndedMatches(
+                link: endedLink) { result in
+                    switch result {
+                    case .success(let endedMatch):
+                        self.passedMatches.value = endedMatch.gamesEnd
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//LIVE MATCH
+            liveLink = Constants.createURL(
                 link: Constants.Links.liveMatch,
                 sport: Constants.Sports.basketball
             )
-        }
-
-        NetworkManager.shared.downloadMatches(
-            link: link
-        ) { [weak self] result in
-                switch result {
-                case .success(let match):
-                    self?.liveMatches.value.append(contentsOf: match.gamesLive)
-                case .failure(let error):
-                    print("Error: - \(error.localizedDescription)")
+            NetworkManager.shared.downloadLiveMatches(
+                link: liveLink) { result in
+                    switch result {
+                    case .success(let liveMatch):
+                        self.liveMatches.value = liveMatch.gamesLive
+                    case .failure(let error):
+                        print("Error - : \(error.localizedDescription)")
+                    }
+                }
+//PREMATCH
+            preLink = Constants.createURL(
+                link: Constants.Links.preData,
+                sport: Constants.Sports.basketball
+            )
+            preLink += Constants.Date.today
+            NetworkManager.shared.downloadPreMatches(
+                link: preLink) { result in
+                    switch result {
+                    case .success(let preMatch):
+                        self.preMatches.value = preMatch.gamesPre
+                    case .failure(let error):
+                        print("Error: - \(error.localizedDescription)")
                 }
             }
+        }
     }
 }

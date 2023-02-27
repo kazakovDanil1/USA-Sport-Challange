@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct HockeyEnd: Codable {
+struct EndedMatch: Codable {
     let timeRequest: Double
     let capacityRequests, remainRequests, lastTimeYourKey, dateGames: String
-    let gamesEnd: [HockeyGamesEnd]
+    let gamesEnd: [EndedGames]
 
     enum CodingKeys: String, CodingKey {
         case timeRequest = "time_request"
@@ -23,9 +23,9 @@ struct HockeyEnd: Codable {
 }
 
 // MARK: - GamesEnd
-struct HockeyGamesEnd: Codable {
+struct EndedGames: Codable {
     let gameID, time, timeStatus: String
-    let league, home, away: EndHockey
+    let league, home, away: EndGame
     let score: String
 
     enum CodingKeys: String, CodingKey {
@@ -37,7 +37,7 @@ struct HockeyGamesEnd: Codable {
 }
 
 // MARK: - Away
-struct EndHockey: Codable {
+struct EndGame: Codable {
     let name, id: String
     let imageID: String?
     let cc: String

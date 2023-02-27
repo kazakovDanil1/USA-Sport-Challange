@@ -4,6 +4,9 @@
 import UIKit
 import SnapKit
 
+
+var globalState: Dynamic<String> = Dynamic("liveMatch")
+
 protocol ReturnBackFromViewControllerDelegate:
     AnyObject
 {
@@ -13,22 +16,13 @@ protocol ReturnBackFromViewControllerDelegate:
 class SportViewController:
     UIViewController
 {
-    
-    private lazy var contentView = self.view as? SportView
+    lazy var contentView = self.view as? SportView
     private let settingsViewController = SettingsViewController()
     private let chosenSportViewController = ChosenSportViewController()
     private let specialSportViewController: SpecialSportViewController? = nil
-    
-    private let viewModel: SportViewModelType?
-    
+   
     override func loadView() {
         self.view = SportView(frame: UIScreen.main.bounds)
-    }
-    
-    init(viewModel: SportViewModelType) {
-        self.viewModel = viewModel
-        
-        super.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {
@@ -56,7 +50,7 @@ class SportViewController:
         )
         sportMenu.basketBallContainer.addTarget(
             self,
-            action: #selector(enterBaseballSport),
+            action: #selector(enterBasketballSport),
             for: .touchUpInside
         )
         sportMenu.HockeyContainer.addTarget(
@@ -66,13 +60,9 @@ class SportViewController:
         )
         sportMenu.baseBallContainer.addTarget(
             self,
-            action: #selector(enterSoccerSport),
+            action: #selector(enterBaseballSport),
             for: .touchUpInside
         )
-    }
-    
-    required init(coder: NSCoder) {
-        fatalError()
     }
 }
 
@@ -81,16 +71,11 @@ extension SportViewController:
 {
     func returnBack(_ from: UIViewController, name: String) {
         removeChildViewController(from)
-        
-        if name == "special" {
-            dropAnimation()
-        }
     }
 }
 
 extension SportViewController
 {
-    
     func dropAnimation() {
         DispatchQueue.main.async {
             self.contentView?.sportMenuButton.slideAnimation(
@@ -106,14 +91,12 @@ extension SportViewController
         else {
             return
         }
-        dropAnimation()
         
         let specialSportViewController = SpecialSportViewController(
             viewModel: SpecialSportViewModel(
                 sport: .soccer
             )
         )
-        let matchVC = MatchDetailsViewController()
         
         addChildViewController(
             specialSportViewController,
@@ -127,7 +110,7 @@ extension SportViewController
         else {
             return
         }
-        dropAnimation()
+        
         let specialSportViewController = SpecialSportViewController(
             viewModel: SpecialSportViewModel(
                 sport: .basketball
@@ -146,7 +129,7 @@ extension SportViewController
         else {
             return
         }
-        dropAnimation()
+        
         let specialSportViewController = SpecialSportViewController(
             viewModel: SpecialSportViewModel(
                 sport: .baseball
@@ -164,7 +147,7 @@ extension SportViewController
         else {
             return
         }
-        dropAnimation()
+        
         let specialSportViewController = SpecialSportViewController(
             viewModel: SpecialSportViewModel(
                 sport: .icehockey
@@ -183,7 +166,7 @@ extension SportViewController
         else {
             return
         }
-        dropAnimation()
+        
         let specialSportViewController = SpecialSportViewController(
             viewModel: SpecialSportViewModel(
                 sport: .americanfootball
@@ -196,7 +179,10 @@ extension SportViewController
         )
         specialSportViewController.delegate = self
     }
-    
+}
+
+extension SportViewController
+{
     @objc func callSettings() {
         guard let contentView = contentView
         else {
@@ -223,15 +209,39 @@ extension SportViewController
         chosenSportViewController.delegate = self
     }
     
-    func remove() {
-        removeChildView()
-    }
     
+    @objc func endedMatch(){
+        globalState.value = "endedMatch"
+    }
+    @objc func liveMatch() {
+        globalState.value = "liveMatch"
+    }
+    @objc func preMatch() {
+        globalState.value = "preMatch"
+    }
+
     func addTargets() {
         guard let contentView = contentView
         else {
             return
         }
+        
+        contentView.topContentView.endedButton.addTarget(
+            self,
+            action: #selector(endedMatch),
+            for: .touchUpInside
+        )
+        contentView.topContentView.liveButton.addTarget(
+            self,
+            action: #selector(liveMatch),
+            for: .touchUpInside
+        )
+        contentView.topContentView.comingButton.addTarget(
+            self,
+            action: #selector(preMatch),
+            for: .touchUpInside
+        )
+        
         contentView.topContentView.settingsButton.addTarget(
             self,
             action: #selector(callSettings),
